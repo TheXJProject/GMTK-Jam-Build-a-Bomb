@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class prob_activate_and_cancel : MonoBehaviour
+public class task_activate_and_cancel : MonoBehaviour
 {
     public control_keys_pressed keyController;
-    public prob_setup_and_status prob;
+    public task_setup_and_status task;
 
     Player_controller inputActions;
     InputAction rightClick;
@@ -30,47 +30,47 @@ public class prob_activate_and_cancel : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        if (!prob_setup_and_status.anyIsFocused && !prob.isSolved)
+        if (!task_setup_and_status.anyIsFocused && !task.isSolved)
         {
-            prob.FocusProb();
+            task.FocusTask();
         }
     }
 
     private void Update()
     {
-        if (prob.isFocused && !prob.isBeingSolved)
+        if (task.isFocused && !task.isBeingSolved)
         {
             numReqKeysPressed = 0;
-            for (global::System.Int32 i = 0; i < prob.problemDifficulty; i++)
+            for (global::System.Int32 i = 0; i < task.taskDifficulty; i++)
             {
-                if (!(keyController.keysPressed[prob.keysRequired[i]] == 1)) { break; }
+                if (!(keyController.keysPressed[task.keysRequired[i]] == 1)) { break; }
                 numReqKeysPressed++;
             }
-            if (numReqKeysPressed == prob.problemDifficulty)
+            if (numReqKeysPressed == task.taskDifficulty)
             {
-                prob.isBeingSolved = true;
+                task.isBeingSolved = true;
             }
         }
-        else if (prob.isBeingSolved)
+        else if (task.isBeingSolved)
         {
             numReqKeysPressed = 0;
-            for (global::System.Int32 i = 0; i < prob.problemDifficulty; i++)
+            for (global::System.Int32 i = 0; i < task.taskDifficulty; i++)
             {
-                if (!(keyController.keysPressed[prob.keysRequired[i]] == 1)) { break; }
+                if (!(keyController.keysPressed[task.keysRequired[i]] == 1)) { break; }
                 numReqKeysPressed++;
             }
-            if (numReqKeysPressed != prob.problemDifficulty)
+            if (numReqKeysPressed != task.taskDifficulty)
             {
-                prob.isBeingSolved = false;
+                task.isBeingSolved = false;
             }
         }
     }
 
     void AttemptToUnfocus(InputAction.CallbackContext context)
     {
-        if (prob.isFocused)
+        if (task.isFocused)
         {
-            prob.UnfocusProb();
+            task.UnfocusTask();
         }
     }
 }

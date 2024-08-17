@@ -5,18 +5,18 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class prob_setup_and_status : MonoBehaviour
+public class task_setup_and_status : MonoBehaviour
 {
-    public static bool anyIsFocused; // whether or not the player is currently completing any problem
+    public static bool anyIsFocused; // whether or not the player is currently completing any task
 
     public bool isSolved = false;
     public bool isBeingSolved = false;
-    public bool isFocused = false; // Whether or not the player is currently completing this problem
-    public float amountCompleted = 0f; // percentage way through the problem
-    public int problemDifficulty = 1; // Difficulty is the number of keys needed to press to complete the problem
-    public List<int> keysRequired = new List<int>(); // List of the keys needed in order to start this problem
+    public bool isFocused = false; // Whether or not the player is currently completing this task
+    public float amountCompleted = 0f; // Percentage way through the task
+    public int taskDifficulty = 1; // Difficulty is the number of keys needed to press to complete the taskk
+    public List<int> keysRequired = new List<int>(); // List of the keys needed in order to start this task
 
-    [SerializeField] control_keys_pressed control_Keys_Pressed;
+    [SerializeField] control_keys_pressed keyController;
 
     System.Random generator = new System.Random();
     int genNum = 0;
@@ -26,20 +26,20 @@ public class prob_setup_and_status : MonoBehaviour
     private void OnEnable()
     {
         SetKeysRequired();
-        Debug.Log(control_Keys_Pressed.alphabet[keysRequired[0]]);
+        Debug.Log(keyController.alphabet[keysRequired[0]]);
     }
 
-    public void UnfocusProb()
+    public void UnfocusTask()
     {
         anyIsFocused = false;
         isFocused = false;
     }
-    public void FocusProb()
+    public void FocusTask()
     {
         anyIsFocused = true;
         isFocused = true;
     }
-    void ProblemSolved()
+    void TaskSolved()
     {
         isSolved = true;
         amountCompleted = 1f;
@@ -54,9 +54,9 @@ public class prob_setup_and_status : MonoBehaviour
 
     bool KeysArePressed()
     {
-        for (int i = 0; i < problemDifficulty; i++)
+        for (int i = 0; i < taskDifficulty; i++)
         {
-            if (control_Keys_Pressed.keysPressed[keysRequired[i]] == 0 )
+            if (keyController.keysPressed[keysRequired[i]] == 0 )
             {
                 return false;
             }
