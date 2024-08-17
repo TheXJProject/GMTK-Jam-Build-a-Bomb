@@ -1,0 +1,25 @@
+Game where you need to change size to solve different puzzles
+ - could be a robot
+ - could be a small alien blob creature
+Game where you are a lesser diety and you need to more people to worship you to grow and compete with the other dieties
+Game where you need to create a city sized robot
+Game where you need to build something based on instructions
+Game where you are a wizard who has accidently changed his size and needs to figure out how to get himself to be the correct size again
+
+
+Bomb Game
+ - Slide show beginning
+ - Gameplay where the bomb starts 
+ - Bomb starts small
+ - Have to complete menial tasks
+ - each layer gets more tasks
+ - while completing a task, smaller layers chance to fault
+ - failed task means lose a life
+ - can pause task by holding buttons down and switching layer
+ - timer decrease quicker when a task is faulting
+ - screwing in bolts
+ - welding
+ - connecting wires
+ - nailing
+ - taping
+ 
