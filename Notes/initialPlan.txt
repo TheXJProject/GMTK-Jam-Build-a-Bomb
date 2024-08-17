@@ -1,0 +1,6 @@
+Initial Plan:
+
+> Make the core bomb with "problems" (problems initially will liturally just be placeholder "press button")
+> Fully develop stencil "problem"
+> Implement layers that spawn more problems
+> Create different variety of problems
