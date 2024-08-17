@@ -1,6 +1,23 @@
 Initial Plan:
 
-> Make the core bomb with "problems" (problems initially will liturally just be placeholder "press button")
+
 > Fully develop stencil "problem"
+	> Needs specific atributes
+		> bool isSolved
+		> bool isFocused
+		> float amountCompleted
+		> int problemDifficulty (number of keys needed to be pressed)
+	> Function which, when called, sets the problem to solved
+	> Function that claims certain keys that need to be completed while doing the task
+		> If task is not completed before the keys are released, then lose a life
+		> Else, nothing happens
+	> Function that checks if it is completed and changes it to green, else sets it to red
+	> Function that claims attention if you have clicked on it (isFocused)
+
+> Make the core bomb with "problems" (problems initially will liturally just be placeholder "press button")
+	> Problems need to spawn inside bomb
+	> Layers need to know how many problems they contain and when they are all completed
+
 > Implement layers that spawn more problems
+
 > Create different variety of problems
