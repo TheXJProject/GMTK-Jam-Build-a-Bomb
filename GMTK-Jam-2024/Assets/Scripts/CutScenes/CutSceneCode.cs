@@ -1,22 +1,79 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CutSceneCode : MonoBehaviour
 {
     [SerializeField] List<GameObject> slides;
 
-    void Start()
+    [SerializeField] Fade fade;
+
+    private bool changing = true;
+
+    private void OnEnable()
     {
-        slides[0].SetActive(true);
-        slides[1].SetActive(false);
-        slides[2].SetActive(false);
-        slides[3].SetActive(false);
+        Fade.onZeroAlpha += slideNotInView;
+        Fade.onOneAlpha += slideInView;
+    }
+    private void OnDisable()
+    {
+        Fade.onZeroAlpha -= slideNotInView;
+        Fade.onOneAlpha -= slideInView;
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        for (int i = 0; i < slides.Count; i++)
+        {
+            if (i == 0)
+            {
+                slides[i].SetActive(true);
+            }
+            else
+            {
+                slides[i].SetActive(false);
+            }
+        }
+        
+        fade.ShowUI();
+    }
+
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (!changing)
+            {
+                changing = true;
+                fade.HideUI();
+            }
+        }
+    }
+
+    private void slideInView()
+    {
+        changing = false;
+    }
+
+    private void slideNotInView()
+    {
+        for (int i = 0; i < slides.Count; i++)
+        {
+            if (slides[i].activeSelf)
+            {
+                if (slides[slides.Count - 1].activeSelf)
+                {
+                    SceneManager.LoadScene("MainGameLoop");
+                }
+                else
+                {
+                    slides[i].SetActive(false);
+                    slides[i + 1].SetActive(true);
+                    break;
+                }
+            }
+        }
+        fade.ShowUI();
     }
 }
