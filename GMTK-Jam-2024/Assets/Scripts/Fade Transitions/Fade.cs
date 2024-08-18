@@ -26,12 +26,12 @@ public class Fade : MonoBehaviour
     public void ShowUI()
     {
         fadeIn = true;
-        fadeAcceleration = acceleration / 1000000;
+        fadeAcceleration = acceleration / 100000;
     }
     public void HideUI()
     {
         fadeOut = true;
-        fadeAcceleration = acceleration / 1000000;
+        fadeAcceleration = acceleration / 100000;
     }
 
     private void Update()
