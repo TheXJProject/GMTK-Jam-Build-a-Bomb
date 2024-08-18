@@ -14,7 +14,7 @@ public class Fade : MonoBehaviour
     [SerializeField] private bool fadeIn = false;
     [SerializeField] private bool fadeOut = false;
 
-    [Range(0.5f, 5f)]
+    [Range(0.05f, 5f)]
     [SerializeField] private float fadeSpeed;
 
     public void ShowUI()
