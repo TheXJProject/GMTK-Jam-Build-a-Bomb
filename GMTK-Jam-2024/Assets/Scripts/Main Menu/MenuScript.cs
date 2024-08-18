@@ -5,12 +5,38 @@ using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
-    public void PlayGame()
+    private bool hardMode;
+    private bool lockedIn = false;
+
+    private void OnEnable()
     {
-        SceneManager.LoadScene("CutScene");
+        Fade.onZeroAlpha += PlayGame;
     }
-    public void PlayHardMode()
+    private void OnDisable()
     {
-        SceneManager.LoadScene("HardModeCutScene");
+        Fade.onZeroAlpha -= PlayGame;
     }
+
+    public void PlayMode(bool hard)
+    {
+        if (!lockedIn)
+        {
+            hardMode = hard;
+        }
+        lockedIn = true;
+    }
+
+    private void PlayGame()
+    {
+
+        if (hardMode)
+        {
+            SceneManager.LoadScene("HardModeCutScene");
+        }
+        else
+        {
+            SceneManager.LoadScene("CutScene");
+        }
+    }
+
 }
