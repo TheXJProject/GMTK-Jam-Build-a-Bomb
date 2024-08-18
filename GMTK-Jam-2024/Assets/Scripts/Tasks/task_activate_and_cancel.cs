@@ -5,8 +5,11 @@ using UnityEngine.InputSystem;
 
 public class task_activate_and_cancel : MonoBehaviour
 {
-    public control_keys_pressed keyController;
-    public task_setup_and_status task;
+    control_keys_pressed keyController;
+    [SerializeField] task_setup_and_status task;
+    
+    // UPDATE THE BELOW VARIABLE TYPE TO MATCH WHATEVER SCRIPT IS USED BY THE CURRENT TASK
+    [SerializeField] task_hammering tasksTask;
 
     Player_controller inputActions;
     InputAction rightClick;
@@ -19,6 +22,7 @@ public class task_activate_and_cancel : MonoBehaviour
 
     private void OnEnable()
     {
+        keyController = GameObject.Find("/Game Controllers/Controller for Keys Pressed").GetComponent<control_keys_pressed>();
         rightClick = inputActions.mouse.rightClick;
         rightClick.Enable();
         rightClick.performed += AttemptToUnfocus;
@@ -28,9 +32,10 @@ public class task_activate_and_cancel : MonoBehaviour
     {
         rightClick.Disable();
     }
+
     private void OnMouseDown()
     {
-        if (!task_setup_and_status.anyIsFocused && !task.isSolved)
+        if (!task_setup_and_status.anyIsFocused && !task.isSolved) // Task can only be focused if no other task is focused and it isn't already solved
         {
             task.FocusTask();
         }
@@ -38,7 +43,7 @@ public class task_activate_and_cancel : MonoBehaviour
 
     private void Update()
     {
-        if (task.isFocused && !task.isBeingSolved)
+        if (task.isFocused && !task.isBeingSolved) // This if statement section chceks if all the correct keys are being pressed while the task is focused
         {
             numReqKeysPressed = 0;
             for (global::System.Int32 i = 0; i < task.taskDifficulty; i++)
@@ -48,10 +53,10 @@ public class task_activate_and_cancel : MonoBehaviour
             }
             if (numReqKeysPressed == task.taskDifficulty)
             {
-                task.isBeingSolved = true;
+                BeginSolving();
             }
         }
-        else if (task.isBeingSolved)
+        else if (task.isBeingSolved) // This if statement section checks tasks that are being solved to see if the player let go of the correct keys
         {
             numReqKeysPressed = 0;
             for (global::System.Int32 i = 0; i < task.taskDifficulty; i++)
@@ -61,9 +66,20 @@ public class task_activate_and_cancel : MonoBehaviour
             }
             if (numReqKeysPressed != task.taskDifficulty)
             {
-                task.isBeingSolved = false;
+                LetGoWhileSolving();
             }
         }
+    }
+
+    void BeginSolving()
+    {
+        task.isBeingSolved = true;
+    }
+
+    void LetGoWhileSolving()
+    {
+        task.isBeingSolved = false;
+        tasksTask.ResetTask();
     }
 
     void AttemptToUnfocus(InputAction.CallbackContext context)

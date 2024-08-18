@@ -22,7 +22,8 @@ public class task_visualiser : MonoBehaviour
 
     public void DisplayBeingSolved()
     {
-        sprite.color = new Color(1, 0.5f, 0); 
+        if (task.isFocused) { sprite.color = new Color(1, 0.5f, 0); }
+        else { sprite.color = new Color(0.9f, 0.4f, 0); }
     }
 
     public void DisplaySolved()

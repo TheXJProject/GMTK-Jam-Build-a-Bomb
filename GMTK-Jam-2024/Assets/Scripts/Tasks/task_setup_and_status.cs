@@ -13,10 +13,10 @@ public class task_setup_and_status : MonoBehaviour
     public bool isBeingSolved = false;
     public bool isFocused = false; // Whether or not the player is currently completing this task
     public float amountCompleted = 0f; // Percentage way through the task
-    public int taskDifficulty = 1; // Difficulty is the number of keys needed to press to complete the taskk
+    public int taskDifficulty; // Difficulty is the number of keys needed to press to complete the task
     public List<int> keysRequired = new List<int>(); // List of the keys needed in order to start this task
 
-    [SerializeField] control_keys_pressed keyController;
+    control_keys_pressed keyController;
 
     System.Random generator = new System.Random();
     int genNum = 0;
@@ -25,8 +25,14 @@ public class task_setup_and_status : MonoBehaviour
 
     private void OnEnable()
     {
+        keyController = GameObject.Find("/Game Controllers/Controller for Keys Pressed").GetComponent<control_keys_pressed>();
         SetKeysRequired();
-        Debug.Log(keyController.alphabet[keysRequired[0]]);
+
+        // Debug log the keys required
+        for (int i = 0; i < taskDifficulty; i++)
+        {
+            Debug.Log(keyController.alphabet[keysRequired[i]]);
+        }
     }
 
     public void UnfocusTask()
@@ -39,17 +45,29 @@ public class task_setup_and_status : MonoBehaviour
         anyIsFocused = true;
         isFocused = true;
     }
-    void TaskSolved()
+
+    public void SetAmountTaskComplete(float amount)
+    {
+        amountCompleted = amount;
+    }
+
+    public void TaskSolved()
     {
         isSolved = true;
+        isBeingSolved = false;
+        isFocused = false;
+        anyIsFocused = false;
         amountCompleted = 1f;
     } 
 
     void SetKeysRequired()
     {
-        genNum = generator.Next(0, alphabetLength);
-        if (!keysRequired.Contains(genNum))
-            keysRequired.Add(genNum);
+        for (int i = 0; i < taskDifficulty; i++)
+        {
+            genNum = generator.Next(0, alphabetLength);
+            if (!keysRequired.Contains(genNum))
+                keysRequired.Add(genNum);    
+        }
     }
 
     bool KeysArePressed()
