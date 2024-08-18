@@ -57,7 +57,7 @@ public class layer_task_controller : MonoBehaviour
             {
                 loopCount++;
                 tempNewLoc2 = GetNextTaskSpawnLoc();
-                if (loopCount > 10000)
+                if (loopCount > 100000)
                 {
                     Debug.LogWarning("Checking for clashes with other tasks took too long");
                     break;
