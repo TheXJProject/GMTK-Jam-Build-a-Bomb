@@ -8,11 +8,10 @@ Initial Plan:
 		> float amountCompleted
 		> int problemDifficulty (number of keys needed to be pressed)
 	> Function which, when called, sets the problem to solved
-	> Function that claims certain keys that need to be completed while doing the task
-		> If task is not completed before the keys are released, then lose a life
-		> Else, nothing happens
 	> Function that checks if it is completed and changes it to green, else sets it to red
-	> Function that claims attention if you have clicked on it (isFocused)
+	> Function that claims certain keys for the task
+	> Function that claims attention if you have clicked on it (isFocused) if it is not already solved
+	> 
 
 > Make the core bomb with "problems" (problems initially will liturally just be placeholder "press button")
 	> Problems need to spawn inside bomb

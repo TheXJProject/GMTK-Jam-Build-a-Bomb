@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class task_hammering : MonoBehaviour
+public class _task_task_template : MonoBehaviour
 {
     /* DON'T CHANGE ANY OF THE FOLLOWING CODE */
     [SerializeField] task_setup_and_status task;
@@ -33,7 +32,7 @@ public class task_hammering : MonoBehaviour
            leftClick.canceled += FunctionName;  ----> this will perform the function "FunctionName" when you release left click
            
            DO THIS ON THE LINE FOLLOWING THIS COMMENT IF REQUIRED: */
-        leftClick.performed += HammerIn;
+        
     }
 
     /* DON'T CHANGE THE FOLLOWING CODE */
@@ -45,7 +44,9 @@ public class task_hammering : MonoBehaviour
     /* THE FOLLOWING WILL BE USEFUL:
        
         task.SetAmountTaskComplete(float amount)  ----> sets the percentage this task is complete for visualisation purposes ("amount" is a float between 0 and 1)
-        task.TaskSolved();                        ----> run this line of code when the task has been completed (will automatically set "amount" the task is complete to 1)
+        task.TaskSolved();                        ----> run this line of code when the task has been completed (
+                                                        --- ONLY CALL THIS ONCE, AS MULTIPLE CALLS FROM THE SAME TASK WILL BREAK THE SYSTEM
+                                                        --- Will automatically set "amount" the task is complete to 1
         if (task.isBeingSolved && task.isFocused) ----> all code progressing the task should be written inside this if statement (the conditions for a task to be worked on) 
         {
             ...
@@ -53,9 +54,7 @@ public class task_hammering : MonoBehaviour
     */
 
     // Declare variables here:
-    int timesHammered = 0;
-    int hammersNeeded = 6;
-    float percentHammered = 0f;
+    
 
     // You may or may not want to use Update(), there should be no need to use FixedUpdate() but ask if you disagree:
     private void Update()
@@ -71,17 +70,9 @@ public class task_hammering : MonoBehaviour
     // Use the following function to reset the progress of the task (function is called when the player lets go of the keys prematurely)
     void ResetTask()
     {
-        timesHammered = 0;
+        
     }
 
     // Use the following space to create your own functions (REMEMBER: functions can only be assigned to mouse inputs using the "context" parameter as described above)
-    void HammerIn(InputAction.CallbackContext context)
-    {
-        if (task.isBeingSolved && task.isFocused)
-        {
-            timesHammered++;
-            task.SetAmountTaskComplete(percentHammered = timesHammered / hammersNeeded);
-            if (timesHammered >= hammersNeeded) { task.TaskSolved(); }
-        }
-    }
+    
 }

@@ -14,6 +14,7 @@ public class task_setup_and_status : MonoBehaviour
     public bool isFocused = false; // Whether or not the player is currently completing this task
     public float amountCompleted = 0f; // Percentage way through the task
     public int taskDifficulty; // Difficulty is the number of keys needed to press to complete the task
+    public int taskLayer; // Set by the layer that spawns it
     public List<int> keysRequired = new List<int>(); // List of the keys needed in order to start this task
 
     control_keys_pressed keyController;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class task_task_template : MonoBehaviour
+public class task_test : MonoBehaviour
 {
     /* DON'T CHANGE ANY OF THE FOLLOWING CODE */
     [SerializeField] task_setup_and_status task;
@@ -11,6 +11,8 @@ public class task_task_template : MonoBehaviour
 
     Player_controller inputActions;
     InputAction leftClick;
+
+    bool beingSolvedLastFrame;
 
     private void Awake()
     {
@@ -24,12 +26,12 @@ public class task_task_template : MonoBehaviour
         leftClick.Enable();
 
         /* 
-            YOU CAN USE THE FOLLOWING, FUNCTIONS CAN ONLY BE ADDED THIS WAY IF THEY USE THE PARAMETER: InputAction.CallbackContext context:
+           YOU CAN USE THE FOLLOWING, FUNCTIONS CAN ONLY BE ADDED THIS WAY IF THEY USE THE PARAMETER: InputAction.CallbackContext context:
            
-            leftClick.performed += FunctionName; ----> this will perform the function "FunctionName" when you press left click
-            leftClick.canceled += FunctionName;  ----> this will perform the function "FunctionName" when you release left click
+           leftClick.performed += FunctionName; ----> this will perform the function "FunctionName" when you press left click
+           leftClick.canceled += FunctionName;  ----> this will perform the function "FunctionName" when you release left click
            
-            DO THIS ON THE LINE FOLLOWING THIS COMMENT, IF REQUIRED: */
+           DO THIS ON THE LINE FOLLOWING THIS COMMENT IF REQUIRED: */
 
     }
 
@@ -50,20 +52,25 @@ public class task_task_template : MonoBehaviour
     */
 
     // Declare variables here:
-    
+
 
     // You may or may not want to use Update(), there should be no need to use FixedUpdate() but ask if you disagree:
     private void Update()
     {
+        // Don't change the following two lines, which resets the task if the task was failed part way through
+        if (beingSolvedLastFrame && !task.isSolved && !task.isBeingSolved) { ResetTask(); }
+        beingSolvedLastFrame = task.isBeingSolved;
+
+        // Add a any of your own code in the following space:
 
     }
 
     // Use the following function to reset the progress of the task (function is called when the player lets go of the keys prematurely)
-    public void ResetTask()
+    void ResetTask()
     {
-        
+
     }
 
     // Use the following space to create your own functions (REMEMBER: functions can only be assigned to mouse inputs using the "context" parameter as described above)
-    
+
 }

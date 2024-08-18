@@ -8,9 +8,6 @@ public class task_activate_and_cancel : MonoBehaviour
     control_keys_pressed keyController;
     [SerializeField] task_setup_and_status task;
     
-    // UPDATE THE BELOW VARIABLE TYPE TO MATCH WHATEVER SCRIPT IS USED BY THE CURRENT TASK
-    [SerializeField] task_hammering tasksTask;
-
     Player_controller inputActions;
     InputAction rightClick;
     int numReqKeysPressed;
@@ -79,7 +76,6 @@ public class task_activate_and_cancel : MonoBehaviour
     void LetGoWhileSolving()
     {
         task.isBeingSolved = false;
-        tasksTask.ResetTask();
     }
 
     void AttemptToUnfocus(InputAction.CallbackContext context)
