@@ -10,6 +10,8 @@ public class AudioManager : MonoBehaviour
     public Sound[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
 
+    [SerializeField] AudioFade fader;
+    
     private void Awake()
     {
         if (Instance == null)
@@ -25,7 +27,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        //PlayMusic("StartMenuTheme");
+        PlayMusic("StartMenuTheme");
     }
 
     public void PlayMusic(string name)
@@ -55,5 +57,45 @@ public class AudioManager : MonoBehaviour
         {
             sfxSource.PlayOneShot(s.clip);
         }
+    }
+
+    public void ToggleMusic()
+    {
+        musicSource.mute = !sfxSource.mute;
+    }
+
+    public void ToggleSFX()
+    {
+        sfxSource.mute = !sfxSource.mute;
+    }
+
+    public void MusicVolume(float volume)
+    {
+        musicSource.volume = volume;
+    }
+
+    public void SFXVolume(float volume)
+    {
+        sfxSource.volume = volume;
+    }
+
+    public float GetVolumeMusic()
+    {
+        return musicSource.volume;
+    }
+    
+    public float GetVolumeSFX()
+    {
+        return musicSource.volume;
+    }
+
+    public void FadeInMusic()
+    {
+        fader.FadeInVolume();
+    }
+
+    public void FadeOutMusic()
+    {
+        fader.FadeOutVolume();
     }
 }
