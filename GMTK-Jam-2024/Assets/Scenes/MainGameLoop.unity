@@ -933,7 +933,8 @@ MonoBehaviour:
   myUIGroup: {fileID: 339047069}
   fadeIn: 0
   fadeOut: 0
-  fadeSpeed: 0.05
+  fadeSpeed: 0.3700000047683716
+  acceleration: 0.00047
 --- !u!1 &1414362920
 GameObject:
   m_ObjectHideFlags: 0
