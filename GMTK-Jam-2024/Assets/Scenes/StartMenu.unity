@@ -1208,6 +1208,7 @@ MonoBehaviour:
   fadeIn: 0
   fadeOut: 0
   fadeSpeed: 2.6
+  acceleration: 0.00033
 --- !u!4 &1150959860
 Transform:
   m_ObjectHideFlags: 0
