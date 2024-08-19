@@ -9,12 +9,12 @@ public class SceneChangerScript : MonoBehaviour
 
     private void OnEnable()
     {
-        += 
+        layer_controller.onVictoryRoyale += Victorrrrryyy;
     }
 
     private void OnDisable()
     {
-        
+        layer_controller.onVictoryRoyale -= Victorrrrryyy;
     }
 
     private void Update()
@@ -29,13 +29,25 @@ public class SceneChangerScript : MonoBehaviour
 
     public void MainMenu()
     {
-        if (PlayerTracking.Tracker.currentWinType == PlayerTracking.winType.noWin)
+        if ((PlayerTracking.Tracker.currentWinType == PlayerTracking.winType.noWin) && !isLeaving)
         {
             isLeaving = true;
             AudioManager.Instance.FadeOutMusic();
             PlayerTracking.Tracker.currentWinType = PlayerTracking.winType.Loss;
 
             // prepare to change to main menu
+        }
+    }
+
+    public void Victorrrrryyy()
+    {
+        if ((PlayerTracking.Tracker.currentWinType == PlayerTracking.winType.noWin) && !isLeaving)
+        {
+            isLeaving = true;
+            AudioManager.Instance.FadeOutMusic();
+            PlayerTracking.Tracker.currentWinType = PlayerTracking.winType.Win;
+
+            // prepare to change to End Scene
         }
     }
 
