@@ -54,7 +54,7 @@ public class task_hammering : MonoBehaviour
 
     // Declare variables here:
     int timesHammered = 0;
-    int hammersNeeded = 6;
+    int hammersNeeded = 1;
     float percentHammered = 0f;
 
     // You may or may not want to use Update(), there should be no need to use FixedUpdate() but ask if you disagree:

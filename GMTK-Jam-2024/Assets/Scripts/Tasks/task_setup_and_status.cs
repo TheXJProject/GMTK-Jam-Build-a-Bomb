@@ -4,9 +4,11 @@ using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
 public class task_setup_and_status : MonoBehaviour
 {
+    public static event Action<int> onTaskComplete;
     public static bool anyIsFocused; // whether or not the player is currently completing any task
 
     public bool isSolved = false;
@@ -59,6 +61,7 @@ public class task_setup_and_status : MonoBehaviour
         isFocused = false;
         anyIsFocused = false;
         amountCompleted = 1f;
+        onTaskComplete?.Invoke(taskLayer);
     } 
 
     void SetKeysRequired()

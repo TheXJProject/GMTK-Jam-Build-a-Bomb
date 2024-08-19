@@ -6,6 +6,7 @@ public class Layer_ui_controller : MonoBehaviour
 {
     [SerializeField] float initButtonHeight;
     [SerializeField] float gapHeight;
+    [SerializeField] GameObject layerButton;
     
     [SerializeField] List<GameObject> layerButtons;
     
@@ -16,11 +17,28 @@ public class Layer_ui_controller : MonoBehaviour
 
     private void Start()
     {
-        calculateButtonSpacing();
+        layerButtons.Add(Instantiate(layerButton, this.transform));
+        CalculateButtonSpacing();
         VisualiseButtons();
     }
 
-    void calculateButtonSpacing()
+    private void OnEnable()
+    {
+        layer_task_controller.onLayerSolved += AddNewLayerButton;
+    }
+    private void OnDisable()
+    {
+        layer_task_controller.onLayerSolved -= AddNewLayerButton;
+    }
+
+    void AddNewLayerButton(int layerNum)
+    {
+        layerButtons.Add(Instantiate(layerButton, this.transform));
+        CalculateButtonSpacing();
+        VisualiseButtons();
+    }
+
+    void CalculateButtonSpacing()
     {
         predictedTotalHeight = (layerButtons.Count * initButtonHeight) + ((layerButtons.Count - 1) * gapHeight);
         if (predictedTotalHeight > 1)

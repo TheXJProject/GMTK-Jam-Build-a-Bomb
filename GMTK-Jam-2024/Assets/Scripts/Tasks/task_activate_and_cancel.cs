@@ -23,6 +23,8 @@ public class task_activate_and_cancel : MonoBehaviour
         rightClick = inputActions.mouse.rightClick;
         rightClick.Enable();
         rightClick.performed += AttemptToUnfocus;
+
+        gameObject.transform.localScale *= (1f - ((float)task.taskLayer / 20f));
     }
 
     private void OnDisable()

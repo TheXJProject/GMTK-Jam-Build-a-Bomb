@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 101
   m_Sprite: {fileID: -2413806693520163455, guid: 0037cd7a3ec5194449b7ed79a514a151, type: 3}
   m_Color: {r: 0.49803922, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -141,8 +141,8 @@ MonoBehaviour:
   isFocused: 0
   amountCompleted: 0
   taskDifficulty: 1
+  taskLayer: 0
   keysRequired: 
-  keyController: {fileID: 0}
 --- !u!114 &6638445495981778630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,9 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a910339218928468cb19f8c69ade13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyController: {fileID: 3285951393885796417, guid: d97b6e0570c6336499274d17bee67a45, type: 3}
   task: {fileID: 5159372325126649751}
-  tasksTask: {fileID: 1484269482336568441}
 --- !u!114 &1484269482336568441
 MonoBehaviour:
   m_ObjectHideFlags: 0
