@@ -38,7 +38,7 @@ public class AudioManager : MonoBehaviour
         MusicVolume(startingMusicVolume);
     }
 
-    public void PlayMusic(string name)
+    public void PlayMusic(string name, bool oneShot = false)
     {
         Sound s = Array.Find(musicSounds, x => x.name == name);
 
@@ -48,8 +48,15 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            musicSource.clip = s.clip;
-            musicSource.Play();
+            if (oneShot)
+            {
+                musicSource.PlayOneShot(s.clip);
+            }
+            else
+            {
+                musicSource.clip = s.clip;
+                musicSource.Play();
+            }
             // Debug.Log("Sound: " + s.name + "played.");
         }
     }
@@ -112,5 +119,15 @@ public class AudioManager : MonoBehaviour
     public void FadeOutMusic()
     {
         fader.FadeOutVolume();
+    }
+
+    public void PauseMusic()
+    {
+        musicSource.Pause();
+    }
+    
+    public void ResumeMusic()
+    {
+        musicSource.UnPause();
     }
 }
