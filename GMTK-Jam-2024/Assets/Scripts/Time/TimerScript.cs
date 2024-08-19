@@ -81,8 +81,8 @@ public class TimerScript : MonoBehaviour
 
     private string FormText(float time)
     {
-        minutes = (int)Math.Ceiling(time / 60f);
-        seconds = (int)Math.Floor(time % 60);
+        minutes = (int)Math.Floor((time + 1)/ 60f);
+        seconds = (int)(Math.Floor(time % 60));
         if (minutes < 10)
         {
             tempMinStr = "0" + minutes.ToString();

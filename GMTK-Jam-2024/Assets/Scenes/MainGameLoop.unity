@@ -2039,7 +2039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 1444150160}
   timerTimeReadOut: {fileID: 1268618645}
-  startingTimeAmount: 256
+  startingTimeAmount: 10
   timerSpeedIncrease: 2
 --- !u!1 &1730155106
 GameObject:
