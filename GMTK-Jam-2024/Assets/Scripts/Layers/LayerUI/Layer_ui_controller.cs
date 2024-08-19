@@ -19,7 +19,7 @@ public class Layer_ui_controller : MonoBehaviour
     {
         layerButtons.Add(Instantiate(layerButton, this.transform));
         CalculateButtonSpacing();
-        VisualiseButtons();
+        VisualiseAndFitCollider();
     }
 
     private void OnEnable()
@@ -35,7 +35,7 @@ public class Layer_ui_controller : MonoBehaviour
     {
         layerButtons.Add(Instantiate(layerButton, this.transform));
         CalculateButtonSpacing();
-        VisualiseButtons();
+        VisualiseAndFitCollider();
     }
 
     void CalculateButtonSpacing()
@@ -53,7 +53,7 @@ public class Layer_ui_controller : MonoBehaviour
         }
     }
 
-    void VisualiseButtons()
+    void VisualiseAndFitCollider()
     {
         currentSettingHeight = topBottomHeight;
         layerButtons[0].GetComponent<RectTransform>().anchorMin = new Vector2(0, currentSettingHeight);
@@ -72,6 +72,7 @@ public class Layer_ui_controller : MonoBehaviour
         {
             layerButtons[i].GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
             layerButtons[i].GetComponent<RectTransform>().offsetMax = new Vector2(0, 0);
+            layerButtons[i].GetComponent<BoxCollider2D>().size = new Vector2(200f, buttonHeight * 385.9f);
         }
 
     }
