@@ -61,6 +61,8 @@ public class MenuScript : MonoBehaviour
 
     private void PlayGame()
     {
+        PlayerTracking.Tracker.hardMode = hardMode;
+
         if (hardMode)
         {
             SceneManager.LoadScene("HardModeCutScene");

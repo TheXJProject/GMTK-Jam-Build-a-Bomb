@@ -25,17 +25,22 @@ public class EndScene : MonoBehaviour
     {
         fade.ShowUI();
 
-        if (false /*win*/)
+        if (PlayerTracking.Tracker.currentWinType == PlayerTracking.winType.Win)
         {
             winImage.SetActive(true);
             AudioManager.Instance.ToggleMusicLoop(false);
             AudioManager.Instance.PlayMusic("Winning Chord");
         }
-        else /*loss*/
+        else if (PlayerTracking.Tracker.currentWinType == PlayerTracking.winType.Loss)
         {
             loseImage.SetActive(true);
             AudioManager.Instance.PlayMusic("Fail Theme");
         }
+        else
+        {
+            Debug.LogWarning("You didn't even play the game, you cheeky little bugger!");
+        }
+
         AudioManager.Instance.FadeInMusic();
     }
 
@@ -53,12 +58,12 @@ public class EndScene : MonoBehaviour
         if (playAgain)
         {
             AudioManager.Instance.ToggleMusicLoop(true);
-            SceneManager.LoadScene("MainGameLoop");
+            SceneManager.LoadScene("MainGameLoop"); // Will automatically go into the previous gamemode (hard/normal)
         }
         else
         {
             AudioManager.Instance.ToggleMusicLoop(true);
-            SceneManager.LoadScene("StartMenu");
+            SceneManager.LoadScene("StartMenu"); // Player can choose new gamemode
         }
     }
 
