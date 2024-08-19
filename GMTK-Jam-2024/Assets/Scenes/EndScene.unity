@@ -412,10 +412,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7953779336683177124, guid: 6dbb18bc6529abc439b544ecf2412e93, type: 3}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: PlaySFX
-        m_Mode: 5
+      - m_Target: {fileID: 142064454}
+        m_TargetAssemblyTypeName: EndScene, Assembly-CSharp
+        m_MethodName: ButtonPressSound
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -424,9 +424,9 @@ MonoBehaviour:
           m_StringArgument: Button Key Press
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7953779336683177124, guid: 6dbb18bc6529abc439b544ecf2412e93, type: 3}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: FadeOutMusic
+      - m_Target: {fileID: 142064454}
+        m_TargetAssemblyTypeName: EndScene, Assembly-CSharp
+        m_MethodName: ButtonFadeOutMusic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1025,10 +1025,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 7953779336683177124, guid: 6dbb18bc6529abc439b544ecf2412e93, type: 3}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: PlaySFX
-        m_Mode: 5
+      - m_Target: {fileID: 142064454}
+        m_TargetAssemblyTypeName: EndScene, Assembly-CSharp
+        m_MethodName: ButtonPressSound
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1037,9 +1037,9 @@ MonoBehaviour:
           m_StringArgument: Button Key Press
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 7953779336683177124, guid: 6dbb18bc6529abc439b544ecf2412e93, type: 3}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: FadeOutMusic
+      - m_Target: {fileID: 142064454}
+        m_TargetAssemblyTypeName: EndScene, Assembly-CSharp
+        m_MethodName: ButtonFadeOutMusic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

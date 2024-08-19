@@ -26,7 +26,7 @@ public class EndScene : MonoBehaviour
     {
         fade.ShowUI();
 
-        if (true /*win*/)
+        if (false /*win*/)
         {
             winImage.SetActive(true);
             AudioManager.Instance.ToggleMusicLoop(false);
