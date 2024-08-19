@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
+    [SerializeField] Fade fade;
+
     private bool hardMode;
     private bool lockedIn = false;
 
@@ -25,6 +27,8 @@ public class MenuScript : MonoBehaviour
 
     private void Start()
     {
+        fade.ShowUI();
+
         if (!playedSound)
         {
             AudioManager.Instance.PlayMusic("Tense Song Intro", true);
