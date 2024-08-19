@@ -44,13 +44,13 @@ public class AudioManager : MonoBehaviour
 
         if (s == null)
         {
-            Debug.Log("Sound: " + s.name + " Not Found, Idiot!");
+            Debug.LogWarning("Sound: " + s.name + " Not Found, Idiot!");
         }
         else
         {
             musicSource.clip = s.clip;
             musicSource.Play();
-            Debug.Log("Sound: " + s.name + "played.");
+            // Debug.Log("Sound: " + s.name + "played.");
         }
     }
 
@@ -60,12 +60,12 @@ public class AudioManager : MonoBehaviour
 
         if (s == null)
         {
-            Debug.Log("Sound: " + s.name + " Not Found, Idiot!");
+            Debug.LogWarning("Sound: " + s.name + " Not Found, Idiot!");
         }
         else
         {
             sfxSource.PlayOneShot(s.clip);
-            Debug.Log("Sound: " + s.name + "played.");
+            // Debug.Log("Sound: " + s.name + "played.");
         }
     }
 
