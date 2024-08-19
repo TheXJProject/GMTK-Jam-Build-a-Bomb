@@ -16,16 +16,17 @@ public class layer_controller : MonoBehaviour
     int thisLayer = 0;
     private void OnEnable()
     {
+        camera_controller.onCameraReady += createCoreLayer;
         layer_task_controller.onLayerSolved += createNewLayer;
-        createCoreLayer();
     }
 
     private void OnDisable()
     {
+        camera_controller.onCameraReady -= createCoreLayer;
         layer_task_controller.onLayerSolved -= createNewLayer;
     }
 
-    void createCoreLayer()
+    public void createCoreLayer()
     {
         layers.Add(Instantiate(uniqueLayers[thisLayer], Vector2.zero, Quaternion.identity, this.transform));
         onNewLayerCreated?.Invoke(layers[thisLayer].transform.localScale.x);

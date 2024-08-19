@@ -1,16 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class camera_controller : MonoBehaviour
 {
+    public static event Action onCameraReady;
+
     public float zoomSpeed = 1.0f;
     
     List<float> bombDiameters = new List<float>();
+    
     int currentLevelFocused;
-
     bool firstCameraAssign = true;
-
     float targetScale;
     float currentScale;
 
@@ -21,6 +23,7 @@ public class camera_controller : MonoBehaviour
     {
         layer_controller.onNewLayerCreated += RecordBombDiameter;
         button_for_layers.onLayerSelected += ChangeLayerFocus;
+        onCameraReady?.Invoke();
     }
 
     private void OnDisable()
@@ -50,7 +53,7 @@ public class camera_controller : MonoBehaviour
     {
         bombDiameters.Add(diameter);
         ChangeLayerFocus(bombDiameters.Count - 1);
-        
+
         if (firstCameraAssign)
         {
             firstCameraAssign = false;
