@@ -397,7 +397,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9333334, g: 0.3647059, b: 0.3647059, a: 0.5372549}
     m_PressedColor: {r: 0.9333334, g: 0.3647059, b: 0.3647059, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.9607844, g: 0.9607844, b: 0.9607844, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -438,6 +438,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 447447097}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Button Key Press
           m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &125280595
@@ -688,9 +700,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSounds: []
-  sfxSounds: []
+  sfxSounds:
+  - name: Big Explosion
+    clip: {fileID: 8300000, guid: ca6722ece96c8a24597ac2937d05606f, type: 3}
+  - name: Book Opening
+    clip: {fileID: 8300000, guid: 74db0a78a79fd3047afd68c1ad0bfc44, type: 3}
+  - name: Button Key Press
+    clip: {fileID: 8300000, guid: 0f198ab15ea7abf469d4c58de1a3de47, type: 3}
+  - name: Computer Beep
+    clip: {fileID: 8300000, guid: 4dc89d71cb3bf7440abf77a206eabff4, type: 3}
+  - name: Distant Explosion
+    clip: {fileID: 8300000, guid: 0e294c3c8a9bfab4b90e55af43b7da9f, type: 3}
+  - name: Level Select
+    clip: {fileID: 8300000, guid: e7cb87c98a06123488e9e57aaf2e50d8, type: 3}
+  - name: Level Solved
+    clip: {fileID: 8300000, guid: 49f38592168bd524f95015386727c84c, type: 3}
+  - name: Money Clink
+    clip: {fileID: 8300000, guid: b49f7d7900ca0504f832d63ed84b15b2, type: 3}
+  - name: Task Deselection
+    clip: {fileID: 8300000, guid: 4e1b64c9845e984428a416654ab4bb73, type: 3}
+  - name: Task Fail
+    clip: {fileID: 8300000, guid: 9e33344fb0d92654f87bc918472987cd, type: 3}
+  - name: Task Goes Wrong
+    clip: {fileID: 8300000, guid: 54dc5d2374981514e8f7b84dd9b341b5, type: 3}
+  - name: Task Select
+    clip: {fileID: 8300000, guid: 414ec3344bb12f2469a10752c625676a, type: 3}
+  - name: Task Solved
+    clip: {fileID: 8300000, guid: 613edd506b8114d49882f92224234fdb, type: 3}
   musicSource: {fileID: 178739268}
   sfxSource: {fileID: 2009331238}
+  fader: {fileID: 0}
+  startingSFXVolume: 0.5
+  startingMusicVolume: 0.5
 --- !u!4 &447447098
 Transform:
   m_ObjectHideFlags: 0
@@ -921,7 +962,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9333334, g: 0.3647059, b: 0.3647059, a: 0.5372549}
     m_PressedColor: {r: 0.9333334, g: 0.3647059, b: 0.3647059, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.9607844, g: 0.9607844, b: 0.9607844, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -962,6 +1003,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 447447097}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Button Key Press
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &599119014
@@ -1660,7 +1713,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9333334, g: 0.3647059, b: 0.3647059, a: 0.5372549}
     m_PressedColor: {r: 0.9333334, g: 0.3647059, b: 0.3647059, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.9607844, g: 0.9607844, b: 0.9607844, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1701,6 +1754,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 447447097}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Button Key Press
           m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1638079092
@@ -1805,7 +1870,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9333334, g: 0.3647059, b: 0.3647059, a: 0.5372549}
     m_PressedColor: {r: 0.9333334, g: 0.3647059, b: 0.3647059, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.9607844, g: 0.9607844, b: 0.9607844, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1846,6 +1911,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 447447097}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Button Key Press
           m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1640069034

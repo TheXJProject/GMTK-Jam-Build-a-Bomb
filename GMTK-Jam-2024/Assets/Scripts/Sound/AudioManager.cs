@@ -11,6 +11,12 @@ public class AudioManager : MonoBehaviour
     public AudioSource musicSource, sfxSource;
 
     [SerializeField] AudioFade fader;
+
+    [Range(0f,1f)]
+    [SerializeField] float startingSFXVolume;
+    
+    [Range(0f,1f)]
+    [SerializeField] float startingMusicVolume;
     
     private void Awake()
     {
@@ -27,6 +33,8 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+        SFXVolume(startingSFXVolume);
+        MusicVolume(startingMusicVolume);
         PlayMusic("StartMenuTheme");
     }
 
