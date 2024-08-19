@@ -16,6 +16,7 @@ public class PlayerTracking : MonoBehaviour
     public bool hardMode = false;
     public winType currentWinType = winType.noWin;
     public float bestTime = 1000f; //Change to Maximum time in seconds
+    public float currentTime = 0;
 
 
     private void Awake()
