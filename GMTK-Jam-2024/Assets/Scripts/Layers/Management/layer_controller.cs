@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class layer_controller : MonoBehaviour
 {
+    public static event Action onTimerStart;
     public static event Action<int> onLayerSolved;
     public static event Action<float> onNewLayerCreated;
 
@@ -29,16 +30,11 @@ public class layer_controller : MonoBehaviour
     private void OnDisable()
     {
         onLayerSolved -= createNewLayer;
-        task_setup_and_status.onTaskComplete -= TasksGoneWrongInc;
+        task_setup_and_status.onTaskComplete -= CheckFinishedLayer;
         camera_controller.onCameraReady -= createCoreLayer;
         task_activate_and_cancel.onTaskGoesWrong -= TasksGoneWrongInc;
         task_setup_and_status.onWrongTaskCorrected -= TasksGoneWrongDec;
     }
-
-    //private void Update()
-    //{
-    //    Debug.Log(tasksGoingWrong);
-    //}
 
     void CheckFinishedLayer(int taskLayer)
     {
@@ -49,7 +45,7 @@ public class layer_controller : MonoBehaviour
         onLayerSolved?.Invoke(thisLayer);
     }
 
-    void TasksGoneWrongInc(int layer)
+    void TasksGoneWrongInc(int obsolite)
     {
         tasksGoingWrong++;
     }
@@ -67,6 +63,7 @@ public class layer_controller : MonoBehaviour
 
     void createNewLayer(int prevLayer)
     {
+        if (prevLayer == 0) { onTimerStart?.Invoke(); }
         thisLayer = prevLayer + 1;
         layers.Add(Instantiate(uniqueLayers[thisLayer], Vector2.zero, Quaternion.identity, this.transform));
         layers[thisLayer].transform.localScale *= thisLayer * layerSizeIncrease;
