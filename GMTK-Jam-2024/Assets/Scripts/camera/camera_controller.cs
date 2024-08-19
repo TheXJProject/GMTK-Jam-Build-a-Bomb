@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class camera_controller : MonoBehaviour
 {
+    public float zoomSpeed = 1.0f;
+    
     List<float> bombDiameters = new List<float>();
     int currentLevelFocused;
+
+    bool firstCameraAssign = true;
+
+    float targetScale;
+    float currentScale;
+
+    Vector3 targetPos;
+    Vector3 currentPos;
 
     private void OnEnable()
     {
@@ -21,9 +31,14 @@ public class camera_controller : MonoBehaviour
 
     private void Update()
     {
-        gameObject.GetComponent<Camera>().orthographicSize = bombDiameters[currentLevelFocused] / 1.44f;
-        Vector3 offset = GetBombScreenOffset();
-        transform.position = offset;
+        currentScale = gameObject.GetComponent<Camera>().orthographicSize;
+        targetScale = bombDiameters[currentLevelFocused] / 1.44f;
+        gameObject.GetComponent<Camera>().orthographicSize = currentScale + ((targetScale - currentScale) * zoomSpeed * Time.deltaTime);
+
+        currentPos = transform.position;
+        targetPos = GetBombScreenOffset();
+        transform.position = currentPos + ((targetPos - currentPos) * zoomSpeed * Time.deltaTime);
+
     }
 
     void ChangeLayerFocus(int newLayer)
@@ -35,11 +50,17 @@ public class camera_controller : MonoBehaviour
     {
         bombDiameters.Add(diameter);
         ChangeLayerFocus(bombDiameters.Count - 1);
+        
+        if (firstCameraAssign)
+        {
+            firstCameraAssign = false;
+            transform.position = GetBombScreenOffset();
+        }
     }
 
     Vector3 GetBombScreenOffset()
     {
-        Vector3 offset = new Vector2();
+        Vector3 offset = new Vector3();
         float ratio = (float)Screen.width / (float)Screen.height;
 
         offset.y = -(10f/72f * bombDiameters[currentLevelFocused]);
