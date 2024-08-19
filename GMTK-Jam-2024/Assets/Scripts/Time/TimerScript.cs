@@ -54,11 +54,12 @@ public class TimerScript : MonoBehaviour
         {
             if (failCounter > 0)
             {
-                //image.color = Color.red
+                image.color = Color.red;
                 currentTime -= Time.deltaTime * timerSpeedIncrease;
             }
             else
-            { 
+            {
+                image.color = Color.white;
                 currentTime -= Time.deltaTime;
             }
 
@@ -81,7 +82,7 @@ public class TimerScript : MonoBehaviour
 
     private string FormText(float time)
     {
-        minutes = (int)Math.Floor((time + 1)/ 60f);
+        minutes = (int)(time/ 60f);
         seconds = (int)(Math.Floor(time % 60));
         if (minutes < 10)
         {
