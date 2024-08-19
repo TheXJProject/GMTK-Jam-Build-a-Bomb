@@ -67,6 +67,9 @@ MIDWAY PLAN:
 
 
 
+> SMALL THINGS THAT REALLY NEED DOING AT THIS POINT:
+	> Fade to black on a different canvas
+	> Fix buttons going off screen
 
 
 

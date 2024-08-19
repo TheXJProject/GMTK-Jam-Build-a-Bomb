@@ -86,7 +86,7 @@ public class layer_task_controller : MonoBehaviour
     void finishedTask(int taskLayer)
     {
         if (taskLayer == layer) 
-        { 
+        {
             tasksSolved++; 
             if (tasksSolved == numberTasksSpawned) { onLayerSolved?.Invoke(layer); }
         }

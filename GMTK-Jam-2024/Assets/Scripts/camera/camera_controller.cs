@@ -10,11 +10,13 @@ public class camera_controller : MonoBehaviour
     private void OnEnable()
     {
         layer_controller.onNewLayerCreated += RecordBombDiameter;
+        button_for_layers.onLayerSelected += ChangeLayerFocus;
     }
 
     private void OnDisable()
     {
         layer_controller.onNewLayerCreated -= RecordBombDiameter;
+        button_for_layers.onLayerSelected -= ChangeLayerFocus;
     }
 
     private void Update()
@@ -24,9 +26,15 @@ public class camera_controller : MonoBehaviour
         transform.position = offset;
     }
 
+    void ChangeLayerFocus(int newLayer)
+    {
+        currentLevelFocused = newLayer;
+    }
+
     void RecordBombDiameter(float diameter)
     {
         bombDiameters.Add(diameter);
+        ChangeLayerFocus(bombDiameters.Count - 1);
     }
 
     Vector3 GetBombScreenOffset()
