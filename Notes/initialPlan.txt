@@ -16,7 +16,57 @@ Initial Plan:
 > Make the core bomb with "problems" (problems initially will liturally just be placeholder "press button")
 	> Problems need to spawn inside bomb
 	> Layers need to know how many problems they contain and when they are all completed
-
 > Implement layers that spawn more problems
-
 > Create different variety of problems
+
+> Have tasks, now need to create Core and layers
+> start with core that spawns some tasks within itself
+> Function that gets coords for new spawn
+> function that spawns in 3 things in three unique places
+
+> Programming for layer buttons
+> Programming for each button
+> When a button is spawned, they are sized correctly by some sort of manager I suppose
+> Manager knows how many buttons there are currently
+> Manager stores top and bottom of each button
+> Manager knows height and multiplies by (number of buttons * height )+ ((num of buttons+1) * gap height)
+> if height of buttons and spaces is larger than 1, then it changes the height to be:
+	> (1 - ((num of buttons + 1)) * gap height) / num of buttons
+
+> In this situation we now know height and we need to know positions
+> variables which records current height, start with spacing height then loop through
+
+> In situation where buttons don't exceed the height we record the top and bottom spacing to be:
+	> (1 - ((num of buttons * height) + (num of buttons-1) *gap height ) / 2
+
+
+
+
+MIDWAY PLAN:
+> Camera that zooms out per layer
+> Ability to add layers
+> bar that shows progress
+> more task variety 
+> animations and drawing
+> sound effects
+> Victory
+> Music
+
+
+> CAMOORAAAH:
+> Bomb needs to be constantly on a specific part of the screen
+	> Bomb area of screen takes up 65% of the left side and 80% of the top of the screen
+	> Bomb needs to be centered within this
+	> so the bombs centre should be 32.5% from the left and 40% from the top 
+	> Worked out on notes, the camera should be 10% and 17.5% of its own size down and across from the bomb centre
+	> So the camera should be 0.1 * height and 0.175 * width away from the circle
+> Camera needs to be the correct size to be over the top of the bomb
+	> Bomb needs to be 72% of the screen height, 
+	> so to start, if 2 height bomb is 1 height camera then 2/x = 1.44 1/1.44 = 1.3888...
+	> 1.44 IS THE MAGIC NUMBER! DIVIDE LAYER SCALE BY 1.44 TO GET CAMERA SCALE
+
+
+
+
+
+

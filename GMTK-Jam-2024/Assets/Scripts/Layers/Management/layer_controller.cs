@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class layer_controller : MonoBehaviour
 {
+    public static event Action<float> onNewLayerCreated;
+
     [SerializeField] float layerSizeIncrease = 3f;
     [SerializeField] float layerSizeIncAccelerate = 2f;
     [SerializeField] List<GameObject> uniqueLayers;
@@ -24,6 +27,7 @@ public class layer_controller : MonoBehaviour
     void createCoreLayer()
     {
         layers.Add(Instantiate(uniqueLayers[thisLayer], Vector2.zero, Quaternion.identity, this.transform));
+        onNewLayerCreated?.Invoke(layers[thisLayer].transform.localScale.x);
     }
 
     void createNewLayer(int prevLayer)
@@ -32,5 +36,6 @@ public class layer_controller : MonoBehaviour
         layers.Add(Instantiate(uniqueLayers[thisLayer], Vector2.zero, Quaternion.identity, this.transform));
         layers[thisLayer].transform.localScale *= thisLayer * layerSizeIncrease;
         layerSizeIncrease *= layerSizeIncAccelerate;
+        onNewLayerCreated?.Invoke(layers[thisLayer].transform.localScale.x);
     }
 }
