@@ -7,6 +7,7 @@ using UnityEngine;
 public class layer_controller : MonoBehaviour
 {
     public static event Action onTimerStart;
+    public static event Action onVictoryRoyale;
     public static event Action<int> onLayerSolved;
     public static event Action<float> onNewLayerCreated;
 
@@ -35,6 +36,11 @@ public class layer_controller : MonoBehaviour
         for (int i = 0; i < layers.Count; i++)
         {
             if (!layers[i].GetComponent<layer_task_controller>().CheckFinishedThisLayer()) { return; }
+        }
+        if (taskLayer == 9) 
+        { 
+            onVictoryRoyale?.Invoke();
+            return;
         }
         onLayerSolved?.Invoke(thisLayer);
     }
