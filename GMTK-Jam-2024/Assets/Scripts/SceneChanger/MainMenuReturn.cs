@@ -24,4 +24,9 @@ public class MainMenuReturn : MonoBehaviour
         Yes.SetActive(false);
         No.SetActive(false);
     }
+
+    public void PlayButtonPress ()
+    {
+        AudioManager.Instance.PlaySFX("Button Key Press");
+    }
 }
