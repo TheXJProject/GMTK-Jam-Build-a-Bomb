@@ -47,7 +47,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3e7c41f67a760742887bd59cb7bfd59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicSounds: []
+  musicSounds:
+  - name: Cut Scene
+    clip: {fileID: 8300000, guid: 3cb24d201c6fdc34390cd6349772aef5, type: 3}
+  - name: Fail Theme
+    clip: {fileID: 8300000, guid: b6515ce93ff167246ac3cf27879a4fca, type: 3}
+  - name: Tense Song
+    clip: {fileID: 8300000, guid: 8e188c2300ca8a94b89dd48cd64b65d8, type: 3}
+  - name: Tense Song Intro
+    clip: {fileID: 8300000, guid: 134e003a14d96da4ea2299da69ed0bfe, type: 3}
+  - name: Winning Chord
+    clip: {fileID: 8300000, guid: cfdcfb5d08fb91a409d93a6971e1ca4f, type: 3}
   sfxSounds:
   - name: Big Explosion
     clip: {fileID: 8300000, guid: ca6722ece96c8a24597ac2937d05606f, type: 3}
@@ -77,7 +87,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 613edd506b8114d49882f92224234fdb, type: 3}
   musicSource: {fileID: 3990242113549641525}
   sfxSource: {fileID: 688917607525839356}
-  fader: {fileID: 0}
+  fader: {fileID: 9170407969260063541}
   startingSFXVolume: 0.5
   startingMusicVolume: 0.5
 --- !u!114 &9170407969260063541
@@ -94,7 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeIn: 0
   fadeOut: 0
-  fadeSpeed: 0
+  fadeSpeed: 2
 --- !u!1 &1913435547447978558
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,7 +279,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

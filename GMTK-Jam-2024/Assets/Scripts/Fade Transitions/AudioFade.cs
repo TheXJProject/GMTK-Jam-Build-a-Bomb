@@ -17,12 +17,14 @@ public class AudioFade : MonoBehaviour
     private void Start()
     {
         temptVolume = AudioManager.Instance.GetVolumeMusic();
+        fadeVolume = 1f;
     }
 
     public void FadeInVolume()
     {
         if (!fadeIn && !fadeOut && (fadeVolume == 0)) 
         {
+            Debug.Log("Fade In Music!");
             fadeIn = true;
         }
     }
@@ -30,6 +32,7 @@ public class AudioFade : MonoBehaviour
     {
         if (!fadeIn && !fadeOut && (fadeVolume == 1))
         {
+            Debug.Log("Fade Out Music!");
             fadeOut = true;
             temptVolume = AudioManager.Instance.GetVolumeMusic();
         }
@@ -46,7 +49,9 @@ public class AudioFade : MonoBehaviour
                 
                 if (fadeVolume >= 1)
                 {
+                    fadeVolume = 1f;
                     fadeIn = false;
+                    Debug.Log("Ready to fade out music.");
                 }
             }
         }
@@ -60,7 +65,9 @@ public class AudioFade : MonoBehaviour
                 
                 if (fadeVolume <= 0)
                 {
+                    fadeVolume = 0f;
                     fadeOut = false;
+                    Debug.Log("Ready to fade in music.");
                 }
             }
         }

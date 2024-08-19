@@ -35,7 +35,7 @@ public class AudioManager : MonoBehaviour
     {
         SFXVolume(startingSFXVolume);
         MusicVolume(startingMusicVolume);
-        PlayMusic("StartMenuTheme");
+        PlayMusic("Tense Song Intro");
     }
 
     public void PlayMusic(string name)
@@ -44,7 +44,7 @@ public class AudioManager : MonoBehaviour
 
         if (s == null)
         {
-            Debug.Log("Sound Not Found Idiot!");
+            Debug.Log("Sound: " + s.name + " Not Found, Idiot!");
         }
         else
         {
@@ -59,7 +59,7 @@ public class AudioManager : MonoBehaviour
 
         if (s == null)
         {
-            Debug.Log("Sound Not Found Idiot!");
+            Debug.Log("Sound: " + s.name + " Not Found, Idiot!");
         }
         else
         {
