@@ -13,8 +13,14 @@ public class TimerScript : MonoBehaviour
 
     [Range(10f,1000f)]
     [SerializeField] float startingTimeAmount = 300f;
+    [Range(1f, 10f)]
+    [SerializeField] float timerSpeedIncrease = 1f;
 
     private float currentTime;
+
+    private bool timerStopped = false;
+
+    private bool drainingTime = false;
 
     private int minutes;
     private int seconds;
@@ -22,30 +28,61 @@ public class TimerScript : MonoBehaviour
     private string tempSecStr;
     private string timeStr;
 
+    private int failCounter = 0;
+
     private void OnEnable()
     {
         layer_controller.onTimerStart += StartTimer;
+        layer_controller.onVictoryRoyale += StopTimer;
+
+        task_activate_and_cancel.onTaskGoesWrong += FailCounterIncrease;
+        task_setup_and_status.onWrongTaskCorrected += FailCounterDecrease;
     }
 
     private void OnDisable()
     {
         layer_controller.onTimerStart -= StartTimer;
+        layer_controller.onVictoryRoyale -= StopTimer;
+
+        task_activate_and_cancel.onTaskGoesWrong -= FailCounterIncrease;
+        task_setup_and_status.onWrongTaskCorrected -= FailCounterDecrease;
     }
 
     private void Update()
     {
-        //curren
+        if ((currentTime > 0) && !timerStopped)
+        {
+            if (failCounter > 0)
+            {
+                //image.color = Color.red
+                currentTime -= Time.deltaTime * timerSpeedIncrease;
+            }
+            else
+            { 
+                currentTime -= Time.deltaTime;
+            }
 
-        //image.color = Color.red;
+            PlayerTracking.Tracker.currentTime = currentTime;
+            timerTimeReadOut.text = FormText(currentTime);
+        }
 
-        timerTimeReadOut.text = FormText(currentTime);
+        if (currentTime < 0)
+        {
+            timerStopped = true;
+            currentTime = 0;
+            PlayerTracking.Tracker.currentTime = currentTime;
+            timerTimeReadOut.text = FormText(currentTime);
 
+            PlayerTracking.Tracker.currentWinType = PlayerTracking.winType.Loss;
+
+            Debug.Log("Player looses: Ran Out Of Time!");
+        }
     }
 
     private string FormText(float time)
     {
-        minutes = (int)Math.Floor(time / 60f);
-        seconds = (int)Math.Ceiling(time % 60);
+        minutes = (int)Math.Ceiling(time / 60f);
+        seconds = (int)Math.Floor(time % 60);
         if (minutes < 10)
         {
             tempMinStr = "0" + minutes.ToString();
@@ -54,7 +91,7 @@ public class TimerScript : MonoBehaviour
         {
             tempMinStr = minutes.ToString();
         }
-        if (minutes < 10)
+        if (seconds < 10)
         {
             tempSecStr = "0" + seconds.ToString();
         }
@@ -76,6 +113,23 @@ public class TimerScript : MonoBehaviour
 
     private void StopTimer()
     {
-        PlayerTracking.Tracker.bestTime = currentTime;
+        timerStopped = true;
+        PlayerTracking.Tracker.currentTime = currentTime;
+        timerTimeReadOut.text = FormText(currentTime);
+
+        if ((startingTimeAmount - currentTime) < PlayerTracking.Tracker.bestTime)
+        {
+            PlayerTracking.Tracker.bestTime = startingTimeAmount - currentTime;
+        }
+    }
+
+    private void FailCounterIncrease(int layerp)
+    {
+        failCounter++;
+    }
+    
+    private void FailCounterDecrease(int layerp)
+    {
+        failCounter--;
     }
 }

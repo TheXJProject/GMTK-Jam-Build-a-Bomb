@@ -50,7 +50,7 @@ public class LifeControl : MonoBehaviour
             {
                 PlayerTracking.Tracker.currentWinType = PlayerTracking.winType.Loss;
 
-                Debug.Log("Player looses bigtime :'(");
+                Debug.Log("Player looses: No Lives Left!");
 
             }
         }
