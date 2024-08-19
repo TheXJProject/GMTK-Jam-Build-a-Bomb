@@ -34,8 +34,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         SFXVolume(startingSFXVolume);
-        MusicVolume(startingMusicVolume);
-        PlayMusic("Tense Song Intro");
+        MusicVolume(startingMusicVolume)
     }
 
     public void PlayMusic(string name)
@@ -67,9 +66,14 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void ToggleMusicLoop(bool loop)
+    {
+        musicSource.loop = loop;
+    }
+
     public void ToggleMusic()
     {
-        musicSource.mute = !sfxSource.mute;
+        musicSource.mute = !musicSource.mute;
     }
 
     public void ToggleSFX()
