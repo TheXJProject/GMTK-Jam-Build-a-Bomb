@@ -9,6 +9,10 @@ public class MenuScript : MonoBehaviour
     private bool lockedIn = false;
 
     private bool playedSound = false;
+    private bool playedMusic = false;
+
+    private float timeTillSong = 9f;
+    private float time = 100f;
 
     private void OnEnable()
     {
@@ -26,6 +30,23 @@ public class MenuScript : MonoBehaviour
             AudioManager.Instance.PlayMusic("Tense Song Intro");
             AudioManager.Instance.FadeInMusic();
             playedSound = true;
+            time = 0;
+        }
+    }
+
+    private void Update()
+    {
+        if (time <= timeTillSong)
+        {
+            time += Time.deltaTime;
+        }
+        else
+        {
+            if (!playedMusic)
+            {
+                AudioManager.Instance.PlayMusic("Tense Song");
+                playedMusic = true;
+            }
         }
     }
 
