@@ -1148,6 +1148,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tracker
       objectReference: {fileID: 0}
+    - target: {fileID: 8299061152829825570, guid: f30d4d60e6c8dbf41bafefca2702525e, type: 3}
+      propertyPath: currentWinType
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
