@@ -24,7 +24,8 @@ public class CutSceneCode : MonoBehaviour
 
     void Start()
     {
-        AudioManager.Instance.PlayMusic("CutSceneMusic");
+        AudioManager.Instance.PlayMusic("Cut Scene");
+        AudioManager.Instance.FadeInMusic();
 
         for (int i = 0; i < slides.Count; i++)
         {
@@ -48,7 +49,12 @@ public class CutSceneCode : MonoBehaviour
             if (!changing)
             {
                 changing = true;
+                
                 fade.HideUI();
+                if (slides[slides.Count - 1].activeSelf)
+                {
+                    AudioManager.Instance.FadeOutMusic();
+                }
             }
         }
     }
@@ -65,7 +71,7 @@ public class CutSceneCode : MonoBehaviour
             if (slides[i].activeSelf)
             {
                 if (slides[slides.Count - 1].activeSelf)
-                {
+                { 
                     SceneManager.LoadScene("MainGameLoop");
                 }
                 else

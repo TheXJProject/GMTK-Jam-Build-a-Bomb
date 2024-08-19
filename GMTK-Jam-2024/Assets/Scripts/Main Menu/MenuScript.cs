@@ -28,7 +28,6 @@ public class MenuScript : MonoBehaviour
 
     private void PlayGame()
     {
-
         if (hardMode)
         {
             SceneManager.LoadScene("HardModeCutScene");
