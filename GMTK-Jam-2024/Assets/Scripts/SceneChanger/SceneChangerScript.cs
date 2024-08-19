@@ -7,16 +7,14 @@ public class SceneChangerScript : MonoBehaviour
 {
     private bool isLeaving = false;
 
-    public void MainMenu()
+    private void OnEnable()
     {
-        if (PlayerTracking.Tracker.currentWinType == PlayerTracking.winType.noWin)
-        {
-            isLeaving = true;
-            AudioManager.Instance.FadeOutMusic();
-            PlayerTracking.Tracker.currentWinType = PlayerTracking.winType.Loss;
+        += 
+    }
 
-            // prepare to change to main menu
-        }
+    private void OnDisable()
+    {
+        
     }
 
     private void Update()
@@ -26,6 +24,18 @@ public class SceneChangerScript : MonoBehaviour
             isLeaving = true;
             AudioManager.Instance.FadeOutMusic();
             // prepare to change to end scene
+        }
+    }
+
+    public void MainMenu()
+    {
+        if (PlayerTracking.Tracker.currentWinType == PlayerTracking.winType.noWin)
+        {
+            isLeaving = true;
+            AudioManager.Instance.FadeOutMusic();
+            PlayerTracking.Tracker.currentWinType = PlayerTracking.winType.Loss;
+
+            // prepare to change to main menu
         }
     }
 
