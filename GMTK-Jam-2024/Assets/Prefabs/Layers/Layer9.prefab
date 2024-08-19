@@ -102,7 +102,7 @@ MonoBehaviour:
   tasksSpawned: []
   taskPositions: []
   layer: 9
-  numberTasksSpawned: 20
+  numberTasksSpawned: 1
   radiusForTaskCollider: 0.16
-  minRadiusForNoSpawns: 0.3
+  minRadiusForNoSpawns: 0.5
   maxRadiusForNoSpawns: 1.05

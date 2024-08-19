@@ -25,11 +25,11 @@ public class Layer_ui_controller : MonoBehaviour
 
     private void OnEnable()
     {
-        layer_task_controller.onLayerSolved += AddNewLayerButton;
+        layer_controller.onLayerSolved += AddNewLayerButton;
     }
     private void OnDisable()
     {
-        layer_task_controller.onLayerSolved -= AddNewLayerButton;
+        layer_controller.onLayerSolved -= AddNewLayerButton;
     }
 
     void AddNewLayerButton(int layerNum)

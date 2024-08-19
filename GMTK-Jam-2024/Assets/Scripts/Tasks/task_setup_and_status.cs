@@ -9,10 +9,12 @@ using System;
 public class task_setup_and_status : MonoBehaviour
 {
     public static event Action<int> onTaskComplete;
+    public static event Action onWrongTaskCorrected;
     public static bool anyIsFocused; // whether or not the player is currently completing any task
 
     public bool isSolved = false;
     public bool isBeingSolved = false;
+    public bool hasGoneWrong = false;
     public bool isFocused = false; // Whether or not the player is currently completing this task
     public float amountCompleted = 0f; // Percentage way through the task
     public int taskDifficulty; // Difficulty is the number of keys needed to press to complete the task
@@ -61,7 +63,10 @@ public class task_setup_and_status : MonoBehaviour
         isFocused = false;
         anyIsFocused = false;
         amountCompleted = 1f;
+
+        if (hasGoneWrong) { onWrongTaskCorrected?.Invoke(); }
         onTaskComplete?.Invoke(taskLayer);
+        
     } 
 
     void SetKeysRequired()

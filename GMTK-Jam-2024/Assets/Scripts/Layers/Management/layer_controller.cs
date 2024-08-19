@@ -6,7 +6,10 @@ using UnityEngine;
 
 public class layer_controller : MonoBehaviour
 {
+    public static event Action<int> onLayerSolved;
     public static event Action<float> onNewLayerCreated;
+
+    [SerializeField] public static int tasksGoingWrong = 0;
 
     [SerializeField] float layerSizeIncrease = 3f;
     [SerializeField] float layerSizeIncAccelerate = 2f;
@@ -16,14 +19,44 @@ public class layer_controller : MonoBehaviour
     int thisLayer = 0;
     private void OnEnable()
     {
+        onLayerSolved += createNewLayer;
+        task_setup_and_status.onTaskComplete += CheckFinishedLayer;
         camera_controller.onCameraReady += createCoreLayer;
-        layer_task_controller.onLayerSolved += createNewLayer;
+        task_activate_and_cancel.onTaskGoesWrong += TasksGoneWrongInc;
+        task_setup_and_status.onWrongTaskCorrected += TasksGoneWrongDec;
     }
 
     private void OnDisable()
     {
+        onLayerSolved -= createNewLayer;
+        task_setup_and_status.onTaskComplete -= TasksGoneWrongInc;
         camera_controller.onCameraReady -= createCoreLayer;
-        layer_task_controller.onLayerSolved -= createNewLayer;
+        task_activate_and_cancel.onTaskGoesWrong -= TasksGoneWrongInc;
+        task_setup_and_status.onWrongTaskCorrected -= TasksGoneWrongDec;
+    }
+
+    //private void Update()
+    //{
+    //    Debug.Log(tasksGoingWrong);
+    //}
+
+    void CheckFinishedLayer(int taskLayer)
+    {
+        for (int i = 0; i < layers.Count; i++)
+        {
+            if (!layers[i].GetComponent<layer_task_controller>().TestLayerIsComplete()) { return; }
+        }
+        onLayerSolved?.Invoke(thisLayer);
+    }
+
+    void TasksGoneWrongInc(int layer)
+    {
+        tasksGoingWrong++;
+    }
+
+    void TasksGoneWrongDec()
+    {
+        tasksGoingWrong--;
     }
 
     public void createCoreLayer()

@@ -72,7 +72,7 @@ MIDWAY PLAN:
 	> Fix buttons going off screen	 		----> GOOD ENOUGH
 
 	> nothing can be pressed unless unfocused 	----> DONE
-	> Can't select a task you're not on layer for
+	> Can't select a task you're not on layer for	----> DONE 
 	> Tasks can go wrong
 	> Tasks display their required keys on focus
 	> Timer
