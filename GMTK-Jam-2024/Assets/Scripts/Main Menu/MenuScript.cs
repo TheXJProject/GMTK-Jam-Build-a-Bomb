@@ -17,6 +17,12 @@ public class MenuScript : MonoBehaviour
         Fade.onZeroAlpha -= PlayGame;
     }
 
+    private void Start()
+    {
+        AudioManager.Instance.PlayMusic("Tense Song Intro");
+        AudioManager.Instance.FadeInMusic();
+    }
+
     public void PlayMode(bool hard)
     {
         if (!lockedIn)
