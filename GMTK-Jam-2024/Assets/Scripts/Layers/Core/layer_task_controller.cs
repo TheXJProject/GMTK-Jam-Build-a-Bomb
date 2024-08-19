@@ -21,8 +21,6 @@ public class layer_task_controller : MonoBehaviour
     Vector2 tempNewLoc1;
     Vector2 tempNewLoc2;
 
-    int count = 0;
-
     private void OnEnable()
     {
         SpawnTasks();
@@ -92,17 +90,4 @@ public class layer_task_controller : MonoBehaviour
         Debug.Log(gameObject + " returned true");
         return true;
     }
-
-    //void finishedTask(int taskLayer)
-    //{
-    //    if (taskLayer == layer)
-    //    {
-    //        topLayerTasksSolved++;
-    //    }
-    //    Debug.Log(gameObject + " done this " + ++count);
-    //    if ((topLayerTasksSolved == numberTasksSpawned) && (layer_controller.tasksGoingWrong == 0)) 
-    //    {
-    //        onLayerSolved?.Invoke(layer); 
-    //    }
-    //}
 }
