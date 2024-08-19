@@ -6,30 +6,30 @@ using System;
 
 public class layer_task_controller : MonoBehaviour
 {
-    public static event Action<int> onLayerSolved;
-
     [SerializeField] List<GameObject> uniqueTasks;
     [SerializeField] List<GameObject> tasksSpawned;
     [SerializeField] List<Vector2> taskPositions;
 
     public int layer;
+    public int topLayerTasksSolved = 0;
+
     [SerializeField] int numberTasksSpawned;
     [SerializeField] float radiusForTaskCollider;
     [SerializeField] float minRadiusForNoSpawns;
     [SerializeField] float maxRadiusForNoSpawns;
 
-    int tasksSolved = 0;
     Vector2 tempNewLoc1;
     Vector2 tempNewLoc2;
 
+    int count = 0;
+
     private void OnEnable()
     {
-        task_setup_and_status.onTaskComplete += finishedTask;
         SpawnTasks();
     }
     private void OnDisable()
     {
-        task_setup_and_status.onTaskComplete -= finishedTask;
+
     }
 
     Vector2 GetNextTaskSpawnLoc() // Gets location for spawn within a circle such that it is between the minimum and maxium radius
@@ -83,12 +83,26 @@ public class layer_task_controller : MonoBehaviour
         }
     }
 
-    void finishedTask(int taskLayer)
+    public bool TestLayerIsComplete()
     {
-        if (taskLayer == layer)
+        for (int i = 0; i < numberTasksSpawned; i++)
         {
-            tasksSolved++;
-            if (tasksSolved == numberTasksSpawned) { onLayerSolved?.Invoke(layer); }
+            if (!tasksSpawned[i].GetComponent<task_setup_and_status>().isSolved) { return false; }
         }
+        Debug.Log(gameObject + " returned true");
+        return true;
     }
+
+    //void finishedTask(int taskLayer)
+    //{
+    //    if (taskLayer == layer)
+    //    {
+    //        topLayerTasksSolved++;
+    //    }
+    //    Debug.Log(gameObject + " done this " + ++count);
+    //    if ((topLayerTasksSolved == numberTasksSpawned) && (layer_controller.tasksGoingWrong == 0)) 
+    //    {
+    //        onLayerSolved?.Invoke(layer); 
+    //    }
+    //}
 }

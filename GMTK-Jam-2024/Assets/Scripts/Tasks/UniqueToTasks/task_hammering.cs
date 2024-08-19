@@ -15,6 +15,7 @@ public class task_hammering : MonoBehaviour
 
     bool beingSolvedLastFrame;
 
+    int count = 0;
     private void Awake()
     {
         inputActions = new Player_controller();
@@ -81,7 +82,13 @@ public class task_hammering : MonoBehaviour
         {
             timesHammered++;
             task.SetAmountTaskComplete(percentHammered = timesHammered / hammersNeeded);
-            if (timesHammered >= hammersNeeded) { task.TaskSolved(); }
+            if (timesHammered >= hammersNeeded) 
+            {
+                count++;
+                Debug.Log(count);
+                task.TaskSolved(); 
+                ResetTask();
+            }
         }
     }
 }

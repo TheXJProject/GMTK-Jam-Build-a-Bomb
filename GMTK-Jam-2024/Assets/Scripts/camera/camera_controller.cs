@@ -6,12 +6,12 @@ using UnityEngine;
 public class camera_controller : MonoBehaviour
 {
     public static event Action onCameraReady;
+    public static int currentLevelFocused;
 
     public float zoomSpeed = 1.0f;
     
     List<float> bombDiameters = new List<float>();
     
-    int currentLevelFocused;
     bool firstCameraAssign = true;
     float targetScale;
     float currentScale;

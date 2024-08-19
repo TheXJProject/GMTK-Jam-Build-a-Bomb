@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class task_activate_and_cancel : MonoBehaviour
 {
     public static event Action onPlayerLetTaskGo;
+    public static event Action<int> onTaskGoesWrong;
 
     control_keys_pressed keyController;
     [SerializeField] task_setup_and_status task;
@@ -14,6 +17,8 @@ public class task_activate_and_cancel : MonoBehaviour
     Player_controller inputActions;
     InputAction rightClick;
     int numReqKeysPressed;
+
+    bool test = true;
 
     private void Awake()
     {
@@ -37,7 +42,7 @@ public class task_activate_and_cancel : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!task_setup_and_status.anyIsFocused && !task.isSolved) // Task can only be focused if no other task is focused and it isn't already solved
+        if (!task_setup_and_status.anyIsFocused && !task.isSolved && (camera_controller.currentLevelFocused == task.taskLayer)) // Task can only be focused if no other task is focused and it isn't already solved
         {
             task.FocusTask();
         }
@@ -90,5 +95,16 @@ public class task_activate_and_cancel : MonoBehaviour
         {
             task.UnfocusTask();
         }
+    }
+
+    public void TaskGoesWrong()
+    {
+        task.isSolved = false;
+        task.isBeingSolved = false;
+        task.isFocused = false;
+        task.amountCompleted = 0f;
+        task.hasGoneWrong = true;
+
+        onTaskGoesWrong?.Invoke(task.taskLayer);
     }
 }
