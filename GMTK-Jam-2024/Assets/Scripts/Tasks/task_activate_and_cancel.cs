@@ -18,8 +18,6 @@ public class task_activate_and_cancel : MonoBehaviour
     InputAction rightClick;
     int numReqKeysPressed;
 
-    bool test = true;
-
     private void Awake()
     {
         inputActions = new Player_controller();
