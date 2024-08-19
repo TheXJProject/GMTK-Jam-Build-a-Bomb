@@ -11,7 +11,7 @@ public class MenuScript : MonoBehaviour
     private bool playedSound = false;
     private bool playedMusic = false;
 
-    private float timeTillSong = 8.7f;
+    private float timeTillSong = 9.3f;
     private float time = 100f;
 
     private void OnEnable()

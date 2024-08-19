@@ -55,6 +55,7 @@ public class EndScene : MonoBehaviour
 
     private void slideNotInView()
     {
+        AudioManager.Instance.StopMusic();
         if (playAgain)
         {
             AudioManager.Instance.ToggleMusicLoop(true);
