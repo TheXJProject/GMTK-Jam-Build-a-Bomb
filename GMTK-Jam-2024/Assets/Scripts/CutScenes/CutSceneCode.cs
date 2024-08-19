@@ -24,6 +24,8 @@ public class CutSceneCode : MonoBehaviour
 
     void Start()
     {
+        AudioManager.Instance.PlayMusic("CutSceneMusic");
+
         for (int i = 0; i < slides.Count; i++)
         {
             if (i == 0)
