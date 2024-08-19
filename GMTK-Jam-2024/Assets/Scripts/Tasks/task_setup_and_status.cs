@@ -26,7 +26,7 @@ public class task_setup_and_status : MonoBehaviour
 
     private void OnEnable()
     {
-        keyController = GameObject.Find("/Game Controllers/Controller for Keys Pressed").GetComponent<control_keys_pressed>();
+        keyController = GameObject.Find("/Game Managers/Manager for Keys Pressed").GetComponent<control_keys_pressed>();
         SetKeysRequired();
 
         // Debug log the keys required

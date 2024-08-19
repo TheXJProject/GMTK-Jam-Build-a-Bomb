@@ -19,7 +19,7 @@ public class task_activate_and_cancel : MonoBehaviour
 
     private void OnEnable()
     {
-        keyController = GameObject.Find("/Game Controllers/Controller for Keys Pressed").GetComponent<control_keys_pressed>();
+        keyController = GameObject.Find("/Game Managers/Manager for Keys Pressed").GetComponent<control_keys_pressed>();
         rightClick = inputActions.mouse.rightClick;
         rightClick.Enable();
         rightClick.performed += AttemptToUnfocus;
