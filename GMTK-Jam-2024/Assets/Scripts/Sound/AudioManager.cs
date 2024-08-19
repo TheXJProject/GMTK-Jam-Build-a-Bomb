@@ -27,6 +27,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("destroyed");
             Destroy(gameObject);
         }
     }
@@ -49,6 +50,7 @@ public class AudioManager : MonoBehaviour
         {
             musicSource.clip = s.clip;
             musicSource.Play();
+            Debug.Log("Sound: " + s.name + "played.");
         }
     }
 
@@ -63,6 +65,7 @@ public class AudioManager : MonoBehaviour
         else
         {
             sfxSource.PlayOneShot(s.clip);
+            Debug.Log("Sound: " + s.name + "played.");
         }
     }
 

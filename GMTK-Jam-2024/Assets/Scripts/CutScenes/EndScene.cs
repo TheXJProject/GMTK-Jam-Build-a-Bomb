@@ -16,16 +16,16 @@ public class EndScene : MonoBehaviour
     private void OnEnable()
     {
         Fade.onZeroAlpha += slideNotInView;
-        Fade.onOneAlpha += slideInView;
     }
     private void OnDisable()
     {
         Fade.onZeroAlpha -= slideNotInView;
-        Fade.onOneAlpha -= slideInView;
     }
 
     void Start()
     {
+        fade.ShowUI();
+
         if (true /*win*/)
         {
             winImage.SetActive(true);
@@ -38,13 +38,6 @@ public class EndScene : MonoBehaviour
             AudioManager.Instance.PlayMusic("Fail Theme");
         }
         AudioManager.Instance.FadeInMusic();
-
-        fade.ShowUI();
-    }
-
-    private void slideInView()
-    {
-        changing = false;
     }
 
     public void PlayMode(bool again)
@@ -68,5 +61,15 @@ public class EndScene : MonoBehaviour
             AudioManager.Instance.ToggleMusicLoop(true);
             SceneManager.LoadScene("StartMenu");
         }
+    }
+
+    public void ButtonPressSound()
+    {
+        AudioManager.Instance.PlaySFX("Button Key Press");
+    }
+
+    public void ButtonFadeOutMusic()
+    {
+        AudioManager.Instance.FadeOutMusic(); ;
     }
 }

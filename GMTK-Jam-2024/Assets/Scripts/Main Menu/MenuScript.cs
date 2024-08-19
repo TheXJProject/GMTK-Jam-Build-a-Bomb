@@ -8,6 +8,8 @@ public class MenuScript : MonoBehaviour
     private bool hardMode;
     private bool lockedIn = false;
 
+    private bool playedSound = false;
+
     private void OnEnable()
     {
         Fade.onZeroAlpha += PlayGame;
@@ -19,8 +21,12 @@ public class MenuScript : MonoBehaviour
 
     private void Start()
     {
-        AudioManager.Instance.PlayMusic("Tense Song Intro");
-        AudioManager.Instance.FadeInMusic();
+        if (!playedSound)
+        {
+            AudioManager.Instance.PlayMusic("Tense Song Intro");
+            AudioManager.Instance.FadeInMusic();
+            playedSound = true;
+        }
     }
 
     public void PlayMode(bool hard)
@@ -42,6 +48,16 @@ public class MenuScript : MonoBehaviour
         {
             SceneManager.LoadScene("CutScene");
         }
+    }
+
+    public void ButtonPressSound()
+    {
+        AudioManager.Instance.PlaySFX("Button Key Press");
+    }
+
+    public void ButtonFadeOutMusic()
+    {
+        AudioManager.Instance.FadeOutMusic(); ;
     }
 
 }
