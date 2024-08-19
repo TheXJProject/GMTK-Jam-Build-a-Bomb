@@ -9,7 +9,8 @@ public class Layer_ui_controller : MonoBehaviour
     [SerializeField] GameObject layerButton;
     
     [SerializeField] List<GameObject> layerButtons;
-    
+
+    int countTasksGoingWrong;
     float topBottomHeight;
     float buttonHeight;
     float predictedTotalHeight;
@@ -26,10 +27,26 @@ public class Layer_ui_controller : MonoBehaviour
     private void OnEnable()
     {
         layer_controller.onLayerSolved += AddNewLayerButton;
+        task_activate_and_cancel.onTaskGoesWrong += AlertPlayerToLayer;
     }
     private void OnDisable()
     {
         layer_controller.onLayerSolved -= AddNewLayerButton;
+        task_activate_and_cancel.onTaskGoesWrong -= AlertPlayerToLayer;
+    }
+
+    void AlertPlayerToLayer(int layerNumber)
+    {
+        countTasksGoingWrong++;
+        layerButtons[layerNumber].GetComponent<button_for_layers>().LayerTaskWentWrong = true;
+    }
+
+    void AttemptStopAlerting(int layerNumber)
+    {
+        if (--countTasksGoingWrong == 0)
+        {
+            layerButtons[layerNumber].GetComponent<button_for_layers>().LayerTaskWentWrong = false;
+        }
     }
 
     void AddNewLayerButton(int layerNum)
@@ -77,7 +94,6 @@ public class Layer_ui_controller : MonoBehaviour
         {
             layerButtons[i].GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
             layerButtons[i].GetComponent<RectTransform>().offsetMax = new Vector2(0, 0);
-            // layerButtons[i].GetComponent<BoxCollider2D>().size = new Vector2(200f, buttonHeight * 385.9f);
         }
 
     }

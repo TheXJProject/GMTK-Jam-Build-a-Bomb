@@ -81,13 +81,12 @@ public class layer_task_controller : MonoBehaviour
         }
     }
 
-    public bool TestLayerIsComplete()
+    public bool CheckFinishedThisLayer()
     {
         for (int i = 0; i < numberTasksSpawned; i++)
         {
             if (!tasksSpawned[i].GetComponent<task_setup_and_status>().isSolved) { return false; }
         }
-        Debug.Log(gameObject + " returned true");
         return true;
     }
 }

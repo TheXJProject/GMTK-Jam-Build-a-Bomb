@@ -5,11 +5,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+using System.Linq;
 
 public class task_setup_and_status : MonoBehaviour
 {
     public static event Action<int> onTaskComplete;
-    public static event Action onWrongTaskCorrected;
+    public static event Action<int> onWrongTaskCorrected;
     public static bool anyIsFocused; // whether or not the player is currently completing any task
 
     public bool isSolved = false;
@@ -64,22 +65,33 @@ public class task_setup_and_status : MonoBehaviour
         anyIsFocused = false;
         amountCompleted = 1f;
 
-        if (hasGoneWrong) { onWrongTaskCorrected?.Invoke(); }
+        if (hasGoneWrong) { onWrongTaskCorrected?.Invoke(taskLayer); }
         onTaskComplete?.Invoke(taskLayer);
         
     } 
 
-    void SetKeysRequired()
+    void SetKeysRequired() // Sets unique keys for a task, if the task has gone wrong then the keys won't be ones that are being pressed
     {
+        int j;
+        keysRequired.Clear();
+
         for (int i = 0; i < taskDifficulty; i++)
         {
             genNum = generator.Next(0, alphabetLength);
-            if (!keysRequired.Contains(genNum))
-                keysRequired.Add(genNum);    
+            if (!keysRequired.Contains(genNum)) { keysRequired.Add(genNum); }
+        }
+
+        if (hasGoneWrong)
+        { 
+            for (j = 0; j < taskDifficulty; j++)
+            {
+                if (keyController.keysPressed.Contains(keysRequired[j])) { break; }
+            }
+            if (keyController.keysPressed.Contains(keysRequired[j])) { SetKeysRequired(); }
         }
     }
 
-    bool KeysArePressed()
+    bool KeysArePressed() // Checks the keys for this task are all being pressed down
     {
         for (int i = 0; i < taskDifficulty; i++)
         {

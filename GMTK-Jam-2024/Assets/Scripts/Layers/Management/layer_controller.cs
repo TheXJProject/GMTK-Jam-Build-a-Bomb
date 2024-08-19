@@ -10,8 +10,6 @@ public class layer_controller : MonoBehaviour
     public static event Action<int> onLayerSolved;
     public static event Action<float> onNewLayerCreated;
 
-    [SerializeField] public static int tasksGoingWrong = 0;
-
     [SerializeField] float layerSizeIncrease = 3f;
     [SerializeField] float layerSizeIncAccelerate = 2f;
     [SerializeField] List<GameObject> uniqueLayers;
@@ -21,38 +19,24 @@ public class layer_controller : MonoBehaviour
     private void OnEnable()
     {
         onLayerSolved += createNewLayer;
-        task_setup_and_status.onTaskComplete += CheckFinishedLayer;
+        task_setup_and_status.onTaskComplete += CheckFinishedAllLayers;
         camera_controller.onCameraReady += createCoreLayer;
-        task_activate_and_cancel.onTaskGoesWrong += TasksGoneWrongInc;
-        task_setup_and_status.onWrongTaskCorrected += TasksGoneWrongDec;
     }
 
     private void OnDisable()
     {
         onLayerSolved -= createNewLayer;
-        task_setup_and_status.onTaskComplete -= CheckFinishedLayer;
+        task_setup_and_status.onTaskComplete -= CheckFinishedAllLayers;
         camera_controller.onCameraReady -= createCoreLayer;
-        task_activate_and_cancel.onTaskGoesWrong -= TasksGoneWrongInc;
-        task_setup_and_status.onWrongTaskCorrected -= TasksGoneWrongDec;
     }
 
-    void CheckFinishedLayer(int taskLayer)
+    void CheckFinishedAllLayers(int taskLayer)
     {
         for (int i = 0; i < layers.Count; i++)
         {
-            if (!layers[i].GetComponent<layer_task_controller>().TestLayerIsComplete()) { return; }
+            if (!layers[i].GetComponent<layer_task_controller>().CheckFinishedThisLayer()) { return; }
         }
         onLayerSolved?.Invoke(thisLayer);
-    }
-
-    void TasksGoneWrongInc(int obsolite)
-    {
-        tasksGoingWrong++;
-    }
-
-    void TasksGoneWrongDec()
-    {
-        tasksGoingWrong--;
     }
 
     public void createCoreLayer()
