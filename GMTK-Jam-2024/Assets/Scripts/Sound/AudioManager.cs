@@ -34,7 +34,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         SFXVolume(startingSFXVolume);
-        MusicVolume(startingMusicVolume)
+        MusicVolume(startingMusicVolume);
     }
 
     public void PlayMusic(string name)
