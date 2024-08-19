@@ -27,13 +27,13 @@ public class Fade : MonoBehaviour
     {
         fadeIn = true;
         fadeAcceleration = acceleration / 100000;
-        Debug.Log("Showing UI.");
+        // Debug.Log("Showing UI.");
     }
     public void HideUI()
     {
         fadeOut = true;
         fadeAcceleration = acceleration / 100000;
-        Debug.Log("Hiding UI.");
+        // Debug.Log("Hiding UI.");
     }
 
     private void Update()

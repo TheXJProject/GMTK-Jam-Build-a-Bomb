@@ -9,7 +9,6 @@ public class EndScene : MonoBehaviour
     [SerializeField] GameObject winImage;
     [SerializeField] GameObject loseImage;
 
-    private bool changing = true;
     private bool playAgain;
     private bool lockedIn = false;
 
