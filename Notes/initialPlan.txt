@@ -68,10 +68,19 @@ MIDWAY PLAN:
 
 
 > SMALL THINGS THAT REALLY NEED DOING AT THIS POINT:
-	> Fade to black on a different canvas
-	> Fix buttons going off screen GOOD ENOUGH
-	> buttons can't be pressed until unfocused
-	> Sounds with event trigger
+	> Fade to black on a different canvas 		----> DONE
+	> Fix buttons going off screen	 		----> GOOD ENOUGH
+
+	> nothing can be pressed unless unfocused 	----> DONE
+	> Can't select a task you're not on layer for
+	> Tasks can go wrong
+	> Tasks display their required keys on focus
+	> Timer
+	> Health
+	> More Task variation!!
+	> AAAARRRRRTTTT
+	> Bar for task completion
+	> Sounds with "event trigger" component
 
 
 

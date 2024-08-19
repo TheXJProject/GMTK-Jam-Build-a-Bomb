@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class task_activate_and_cancel : MonoBehaviour
 {
+    public static event Action onPlayerLetTaskGo;
+
     control_keys_pressed keyController;
     [SerializeField] task_setup_and_status task;
     
@@ -78,6 +81,7 @@ public class task_activate_and_cancel : MonoBehaviour
     void LetGoWhileSolving()
     {
         task.isBeingSolved = false;
+        onPlayerLetTaskGo?.Invoke();
     }
 
     void AttemptToUnfocus(InputAction.CallbackContext context)

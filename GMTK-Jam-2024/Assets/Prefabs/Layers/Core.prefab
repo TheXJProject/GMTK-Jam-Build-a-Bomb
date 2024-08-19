@@ -105,4 +105,4 @@ MonoBehaviour:
   numberTasksSpawned: 1
   radiusForTaskCollider: 0.16
   minRadiusForNoSpawns: 0
-  maxRadiusForNoSpawns: 1
+  maxRadiusForNoSpawns: 1.05

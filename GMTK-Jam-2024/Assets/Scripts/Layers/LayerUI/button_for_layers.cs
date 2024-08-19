@@ -10,6 +10,12 @@ public class button_for_layers : MonoBehaviour
 
     public int representedLayer;
 
+    private void Update()
+    {
+        if (task_setup_and_status.anyIsFocused) { gameObject.GetComponent<EventTrigger>().enabled = false; }
+        else { gameObject.GetComponent<EventTrigger>().enabled = true; }
+    }
+
     public void LayerButtonPressed()
     {
         onLayerSelected?.Invoke(representedLayer);
