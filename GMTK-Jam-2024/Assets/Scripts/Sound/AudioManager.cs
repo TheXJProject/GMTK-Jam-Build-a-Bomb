@@ -34,7 +34,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         SFXVolume(startingSFXVolume);
-        MusicVolume(startingMusicVolume)
+        MusicVolume(startingMusicVolume);
     }
 
     public void PlayMusic(string name)
@@ -49,6 +49,7 @@ public class AudioManager : MonoBehaviour
         {
             musicSource.clip = s.clip;
             musicSource.Play();
+            Debug.Log("Sound: " + s.name + "played.");
         }
     }
 
@@ -63,6 +64,7 @@ public class AudioManager : MonoBehaviour
         else
         {
             sfxSource.PlayOneShot(s.clip);
+            Debug.Log("Sound: " + s.name + "played.");
         }
     }
 

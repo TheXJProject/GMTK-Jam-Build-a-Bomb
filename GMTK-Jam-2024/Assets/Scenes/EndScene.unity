@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 142064451}
   - component: {fileID: 142064450}
   - component: {fileID: 142064454}
+  - component: {fileID: 142064455}
   m_Layer: 5
   m_Name: WinLossCanvas
   m_TagString: Untagged
@@ -221,7 +222,6 @@ RectTransform:
   - {fileID: 292450898}
   - {fileID: 850701803}
   - {fileID: 191695311}
-  - {fileID: 1259975339}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -244,6 +244,18 @@ MonoBehaviour:
   fade: {fileID: 168432878}
   winImage: {fileID: 292450897}
   loseImage: {fileID: 264760638}
+--- !u!225 &142064455
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142064448}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &168432876
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,7 +266,6 @@ GameObject:
   m_Component:
   - component: {fileID: 168432879}
   - component: {fileID: 168432878}
-  - component: {fileID: 168432877}
   m_Layer: 0
   m_Name: FadeManager
   m_TagString: Untagged
@@ -262,20 +273,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &168432877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 168432876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cadc2599af5cf343af012fca4319e7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fade: {fileID: 168432878}
-  black: {fileID: 1259975338}
 --- !u!114 &168432878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,11 +285,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a52bad2124138cb4b8257de83ddbfb50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myUIGroup: {fileID: 1259975342}
+  myUIGroup: {fileID: 142064455}
   fadeIn: 0
   fadeOut: 0
-  fadeSpeed: 0.7300000190734863
-  acceleration: 0.01
+  fadeSpeed: 1.7999999523162842
+  acceleration: 0
 --- !u!4 &168432879
 Transform:
   m_ObjectHideFlags: 0
@@ -403,13 +400,37 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 168432876}
-        m_TargetAssemblyTypeName: EndScene, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 168432878}
+        m_TargetAssemblyTypeName: Fade, Assembly-CSharp
+        m_MethodName: HideUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7953779336683177124, guid: 6dbb18bc6529abc439b544ecf2412e93, type: 3}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Button Key Press
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7953779336683177124, guid: 6dbb18bc6529abc439b544ecf2412e93, type: 3}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: FadeOutMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -992,6 +1013,42 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 168432878}
+        m_TargetAssemblyTypeName: Fade, Assembly-CSharp
+        m_MethodName: HideUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 7953779336683177124, guid: 6dbb18bc6529abc439b544ecf2412e93, type: 3}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Button Key Press
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 7953779336683177124, guid: 6dbb18bc6529abc439b544ecf2412e93, type: 3}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: FadeOutMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &850701805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1164,94 +1221,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 862586611}
   m_CullTransparentMesh: 1
---- !u!1 &1259975338
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1259975339}
-  - component: {fileID: 1259975341}
-  - component: {fileID: 1259975340}
-  - component: {fileID: 1259975342}
-  m_Layer: 5
-  m_Name: Black
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1259975339
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259975338}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 142064453}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1259975340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259975338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 4ea86ce5f0a6f1b4c845fcdb696bc06d, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1259975341
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259975338}
-  m_CullTransparentMesh: 1
---- !u!225 &1259975342
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259975338}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1001 &2075790043
 PrefabInstance:
   m_ObjectHideFlags: 0
