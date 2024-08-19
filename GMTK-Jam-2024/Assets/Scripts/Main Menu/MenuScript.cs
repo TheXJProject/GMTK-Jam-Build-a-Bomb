@@ -50,4 +50,14 @@ public class MenuScript : MonoBehaviour
         }
     }
 
+    public void ButtonPressSound()
+    {
+        AudioManager.Instance.PlaySFX("Button Key Press");
+    }
+
+    public void ButtonFadeOutMusic()
+    {
+        AudioManager.Instance.FadeOutMusic(); ;
+    }
+
 }

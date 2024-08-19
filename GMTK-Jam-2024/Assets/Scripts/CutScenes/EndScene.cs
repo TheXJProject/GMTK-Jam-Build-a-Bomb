@@ -62,4 +62,14 @@ public class EndScene : MonoBehaviour
             SceneManager.LoadScene("StartMenu");
         }
     }
+
+    public void ButtonPressSound()
+    {
+        AudioManager.Instance.PlaySFX("Button Key Press");
+    }
+
+    public void ButtonFadeOutMusic()
+    {
+        AudioManager.Instance.FadeOutMusic(); ;
+    }
 }

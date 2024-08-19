@@ -27,6 +27,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("destroyed");
             Destroy(gameObject);
         }
     }
