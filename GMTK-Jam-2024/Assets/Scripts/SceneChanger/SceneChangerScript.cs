@@ -7,16 +7,14 @@ public class SceneChangerScript : MonoBehaviour
 {
     private bool isLeaving = false;
 
-    public void MainMenu()
+    private void OnEnable()
     {
-        if (PlayerTracking.Tracker.currentWinType == PlayerTracking.winType.noWin)
-        {
-            isLeaving = true;
-            AudioManager.Instance.FadeOutMusic();
-            PlayerTracking.Tracker.currentWinType = PlayerTracking.winType.Loss;
+        layer_controller.onVictoryRoyale += Victorrrrryyy;
+    }
 
-            // prepare to change to main menu
-        }
+    private void OnDisable()
+    {
+        layer_controller.onVictoryRoyale -= Victorrrrryyy;
     }
 
     private void Update()
@@ -24,8 +22,41 @@ public class SceneChangerScript : MonoBehaviour
         if ((PlayerTracking.Tracker.currentWinType != PlayerTracking.winType.noWin) && !isLeaving)
         {
             isLeaving = true;
-            AudioManager.Instance.FadeOutMusic();
-            // prepare to change to end scene
+            
+            
+            //AudioManager.Instance.FadeOutMusic();
+            // Alter to be smoother in future
+            
+            
+            AudioManager.Instance.StopMusic();
+            ChangeToEndScene();
+        }
+    }
+
+    public void MainMenu()
+    {
+        if ((PlayerTracking.Tracker.currentWinType == PlayerTracking.winType.noWin) && !isLeaving)
+        {
+            isLeaving = true;
+            PlayerTracking.Tracker.currentWinType = PlayerTracking.winType.Loss;
+
+            AudioManager.Instance.StopMusic();
+            ChangeToMainMenu();
+        }
+    }
+
+    public void Victorrrrryyy()
+    {
+        if ((PlayerTracking.Tracker.currentWinType == PlayerTracking.winType.noWin) && !isLeaving)
+        {
+            isLeaving = true;
+            PlayerTracking.Tracker.currentWinType = PlayerTracking.winType.Win;
+
+            //AudioManager.Instance.FadeOutMusic();
+            // Alter to be smoother in future
+
+            AudioManager.Instance.StopMusic();
+            ChangeToEndScene();
         }
     }
 
@@ -36,6 +67,6 @@ public class SceneChangerScript : MonoBehaviour
 
     private void ChangeToEndScene ()
     {
-        SceneManager.LoadScene("StartMenu");
+        SceneManager.LoadScene("EndScene");
     }
 }

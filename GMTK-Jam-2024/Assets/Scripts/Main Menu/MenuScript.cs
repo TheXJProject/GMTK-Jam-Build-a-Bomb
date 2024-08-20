@@ -66,6 +66,7 @@ public class MenuScript : MonoBehaviour
     private void PlayGame()
     {
         PlayerTracking.Tracker.hardMode = hardMode;
+        AudioManager.Instance.StopMusic();
 
         if (hardMode)
         {
