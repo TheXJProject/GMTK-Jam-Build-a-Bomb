@@ -64,6 +64,27 @@ public class layer_controller : MonoBehaviour
             return;
         }
         AudioManager.Instance.PlaySFX("Level Solved");
+
+        if (prevLayer == 0)
+        {
+            AudioManager.Instance.PlayMusic("2");
+        }
+        if (prevLayer == 2)
+        {
+            AudioManager.Instance.PlayMusic("3");
+        }
+        if (prevLayer == 3)
+        {
+            AudioManager.Instance.PlayMusic("4");
+        }
+        if (prevLayer == 4)
+        {
+            AudioManager.Instance.PlayMusic("5");
+        }
+        if (prevLayer == 8)
+        {
+            AudioManager.Instance.PlayMusic("6");
+        }
         thisLayer = prevLayer + 1;
         layers.Add(Instantiate(uniqueLayers[thisLayer], Vector2.zero, Quaternion.identity, this.transform));
         layers[thisLayer].transform.localScale *= thisLayer * layerSizeIncrease;

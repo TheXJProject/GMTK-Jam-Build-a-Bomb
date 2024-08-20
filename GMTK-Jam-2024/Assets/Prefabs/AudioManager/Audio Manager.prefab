@@ -58,6 +58,20 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 134e003a14d96da4ea2299da69ed0bfe, type: 3}
   - name: Winning Chord
     clip: {fileID: 8300000, guid: cfdcfb5d08fb91a409d93a6971e1ca4f, type: 3}
+  - name: Hardmode
+    clip: {fileID: 8300000, guid: 90d59dd8be764c3418159d67a6229cf1, type: 3}
+  - name: Standard
+    clip: {fileID: 8300000, guid: 2714858105f7f0d48be08ed751c7fb4b, type: 3}
+  - name: 2
+    clip: {fileID: 8300000, guid: 1aa725ef9ac95494bbbb672c476bc5e4, type: 3}
+  - name: 3
+    clip: {fileID: 8300000, guid: 1dcff2f875d390e4b8c13a2ad5d3155f, type: 3}
+  - name: 4
+    clip: {fileID: 8300000, guid: c1a28c77f6a7c9f4ebf3587bd1174e7e, type: 3}
+  - name: 5
+    clip: {fileID: 8300000, guid: 8723321718a92264ab9f810f48726b03, type: 3}
+  - name: 6
+    clip: {fileID: 8300000, guid: 316ff099ab02d974aad3cca558ad8ca1, type: 3}
   sfxSounds:
   - name: Big Explosion
     clip: {fileID: 8300000, guid: ca6722ece96c8a24597ac2937d05606f, type: 3}

@@ -17,6 +17,18 @@ public class SceneChangerScript : MonoBehaviour
         layer_controller.onVictoryRoyale -= Victorrrrryyy;
     }
 
+    private void Start()
+    {
+        if (PlayerTracking.Tracker.hardMode)
+        {
+            AudioManager.Instance.PlayMusic("Hardmode");
+        }
+        else
+        {
+            AudioManager.Instance.PlayMusic("Standard");
+        }
+    }
+
     private void Update()
     {
         if ((PlayerTracking.Tracker.currentWinType != PlayerTracking.winType.noWin) && !isLeaving)
@@ -29,6 +41,7 @@ public class SceneChangerScript : MonoBehaviour
             
             
             AudioManager.Instance.StopMusic();
+            AudioManager.Instance.StopSFX();
             ChangeToEndScene();
         }
     }
@@ -41,6 +54,7 @@ public class SceneChangerScript : MonoBehaviour
             PlayerTracking.Tracker.currentWinType = PlayerTracking.winType.Loss;
 
             AudioManager.Instance.StopMusic();
+            AudioManager.Instance.StopSFX();
             ChangeToMainMenu();
         }
     }
@@ -56,6 +70,7 @@ public class SceneChangerScript : MonoBehaviour
             // Alter to be smoother in future
 
             AudioManager.Instance.StopMusic();
+            AudioManager.Instance.StopSFX();
             ChangeToEndScene();
         }
     }
