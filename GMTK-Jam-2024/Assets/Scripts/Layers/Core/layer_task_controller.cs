@@ -8,8 +8,8 @@ using System.Linq;
 public class layer_task_controller : MonoBehaviour
 {
     public List<GameObject> tasksSpawned;
-    int minNumberTasks = 4;
-    int maxNumberTasks = 4;
+    [SerializeField] int minNumberTasks = 3;
+    [SerializeField] int maxNumberTasks = 6;
 
     control_keys_pressed keyController;
     [SerializeField] List<GameObject> uniqueTasks;
@@ -22,10 +22,11 @@ public class layer_task_controller : MonoBehaviour
     [SerializeField] float minRadiusForNoSpawns;
     [SerializeField] float maxRadiusForNoSpawns;
 
+    System.Random rnd = new System.Random();
+    int temp;
     int numberTasksSpawned;
     Vector2 tempNewLoc1;
     Vector2 tempNewLoc2;
-    System.Random rnd = new System.Random();
 
     private void OnEnable()
     {
@@ -80,8 +81,9 @@ public class layer_task_controller : MonoBehaviour
         }
         for (int i = 0; i < numberTasksSpawned; i++)
         {
-            uniqueTasks[0].GetComponent<task_setup_and_status>().taskLayer = layer;
-            tasksSpawned.Add(Instantiate(uniqueTasks[0], new Vector2(this.transform.position.x, this.transform.position.y) + taskPositions[i], Quaternion.identity, this.transform));
+            temp = rnd.Next(uniqueTasks.Count);
+            uniqueTasks[temp].GetComponent<task_setup_and_status>().taskLayer = layer;
+            tasksSpawned.Add(Instantiate(uniqueTasks[temp], new Vector2(this.transform.position.x, this.transform.position.y) + taskPositions[i], Quaternion.identity, this.transform));
         }
     }
 

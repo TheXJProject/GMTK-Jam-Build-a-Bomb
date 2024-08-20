@@ -223,6 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: {x: 0, y: 0, z: -200}
+  isSpinning: 0
 --- !u!1 &5899883107784148908
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +486,7 @@ MonoBehaviour:
   task: {fileID: 5159372325126649751}
   setNumKeysToBePressed: 1
   Bolt: {fileID: 3782261260697027292}
-  numberOfTurnsUntilDone: 5
+  numberOfTurnsUntilDone: 1
 --- !u!1 &8788551944181457934
 GameObject:
   m_ObjectHideFlags: 0

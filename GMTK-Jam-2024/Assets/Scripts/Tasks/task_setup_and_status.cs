@@ -11,7 +11,7 @@ public class task_setup_and_status : MonoBehaviour
 {
     public static event Action onTaskFocus;
     public static event Action onTaskUnFocus;
-    public static event Action<List<int>> onTaskFocusForButtons;
+    public static event Action<Tuple<List<int>, GameObject>> onTaskFocusForButtons;
     public static event Action<int> onTaskComplete;
     public static event Action<int> onWrongTaskCorrected;
     public static bool anyIsFocused; // whether or not the player is currently completing any task
@@ -38,10 +38,10 @@ public class task_setup_and_status : MonoBehaviour
         SetKeysRequired();
         anyIsFocused = false;
         // Debug log the keys required
-        for (int i = 0; i < taskDifficulty; i++)
-        {
-            Debug.Log(keyController.alphabet[keysRequired[i]]);
-        }
+        //for (int i = 0; i < taskDifficulty; i++)
+        //{
+        //    Debug.Log(keyController.alphabet[keysRequired[i]]);
+        //}
     }
 
     public void UnfocusTask()
@@ -55,7 +55,7 @@ public class task_setup_and_status : MonoBehaviour
         anyIsFocused = true;
         isFocused = true;
         onTaskFocus?.Invoke();
-        onTaskFocusForButtons?.Invoke(keysRequired);
+        onTaskFocusForButtons?.Invoke(new Tuple<List<int>, GameObject>(keysRequired, gameObject));
     }
 
     public void SetAmountTaskComplete(float amount)
@@ -76,7 +76,6 @@ public class task_setup_and_status : MonoBehaviour
             onWrongTaskCorrected?.Invoke(taskLayer); 
         }
         onTaskComplete?.Invoke(taskLayer);
-        
         
     } 
 
