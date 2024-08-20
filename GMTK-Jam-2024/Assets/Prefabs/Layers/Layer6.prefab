@@ -97,12 +97,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c59992c22834c0944b11f6fe1b895256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tasksSpawned: []
+  minNumberTasks: 6
+  maxNumberTasks: 3
   uniqueTasks:
   - {fileID: 6543908858041446523, guid: 044e6a6f6d0a91846b49bdc9c84193f5, type: 3}
-  tasksSpawned: []
+  - {fileID: 6543908858041446523, guid: 06b009fcbce85d944a34cbed8b025554, type: 3}
   taskPositions: []
   layer: 6
-  numberTasksSpawned: 1
+  topLayerTasksSolved: 0
   radiusForTaskCollider: 0.16
   minRadiusForNoSpawns: 0.5
   maxRadiusForNoSpawns: 1.05

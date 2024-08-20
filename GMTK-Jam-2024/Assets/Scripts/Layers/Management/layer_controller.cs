@@ -58,7 +58,11 @@ public class layer_controller : MonoBehaviour
     {
         if (prevLayer == 0) { onTimerStart?.Invoke(); }
         if (prevLayer == 1) { onThingsStartGoingWrong?.Invoke(); }
-
+        if (prevLayer == 9)
+        {
+            onVictoryRoyale?.Invoke();
+            return;
+        }
         thisLayer = prevLayer + 1;
         layers.Add(Instantiate(uniqueLayers[thisLayer], Vector2.zero, Quaternion.identity, this.transform));
         layers[thisLayer].transform.localScale *= thisLayer * layerSizeIncrease;

@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -13,8 +15,10 @@ public class button_ui_controller : MonoBehaviour
     [SerializeField] GameObject keyButton;
 
     [SerializeField] List<GameObject> keyButtons = new List<GameObject>();
+    [SerializeField] List<GameObject> buttonsTasks = new List<GameObject>();
     [SerializeField] List<int> keyButtonKeys = new List<int>();
 
+    [SerializeField] layer_controller layerController;
     control_keys_pressed keyController;
 
     int count;
@@ -39,20 +43,21 @@ public class button_ui_controller : MonoBehaviour
         layer_controller.onTaskCompleteForButtons -= RemoveUndeededButtons;
     }
 
-    void AddAllButtons(List<int> newLetters)
+    void AddAllButtons(Tuple<List<int>, GameObject> tuple)
     {
-        for (int i = 0; i < newLetters.Count; i++)
+        for (int i = 0; i < tuple.Item1.Count; i++)
         {
-            AddNewKeyButton(newLetters[i]);
+            AddNewKeyButton(tuple.Item1[i], tuple.Item2);
         }
     }
 
-    void AddNewKeyButton(int letter)
+    void AddNewKeyButton(int letter, GameObject task)
     {
         RemoveUndeededButtons();
         keyButtons.Add(Instantiate(keyButton, this.transform));
         keyButtonKeys.Add(letter);
         keyButtons[keyButtons.Count - 1].GetComponent<key_buttons>().letter = letter;
+        buttonsTasks.Add(task);
         CalculateButtonSpacing();
         VisualiseButtons();
     }
@@ -98,14 +103,15 @@ public class button_ui_controller : MonoBehaviour
         int i = 0;
         while (true)
         {
-            Debug.Log(i);
+            //Debug.Log(i);
             count++;
             if (i >= keyButtons.Count) { break; }
-            if (keyController.keysPressed[keyButtonKeys[i]] == 0)
+            if (keyController.keysPressed[keyButtonKeys[i]] == 0 || buttonsTasks[i].GetComponent<task_setup_and_status>().isSolved )
             {
                 Destroy(keyButtons[i]);
                 keyButtons.RemoveAt(i);
                 keyButtonKeys.RemoveAt(i);
+                buttonsTasks.RemoveAt(i);
             }
             else { i++; }
             if (count > 10000)

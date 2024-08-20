@@ -96,6 +96,7 @@ public class task_bolting : MonoBehaviour
 
             // Calculate the difference in angle
             angleDifference = currentAngle - previousAngle;
+            Debug.Log(angleDifference);
 
             // Check if the angle difference is positive or negative to determine direction
             if (angleDifference > 0)
