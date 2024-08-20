@@ -16,11 +16,12 @@ public class task_setup_and_status : MonoBehaviour
     public static event Action<int> onWrongTaskCorrected;
     public static bool anyIsFocused; // whether or not the player is currently completing any task
 
+    public static float amountCompleted = 1f; // Percentage way through the task
+
     public bool isSolved = false;
     public bool isBeingSolved = false;
     public bool hasGoneWrong = false;
     public bool isFocused = false; // Whether or not the player is currently completing this task
-    public float amountCompleted = 0f; // Percentage way through the task
     public int taskDifficulty; // Difficulty is the number of keys needed to press to complete the task
     public int taskLayer; // Set by the layer that spawns it
     public List<int> keysRequired = new List<int>(); // List of the keys needed in order to start this task
