@@ -1914,6 +1914,66 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7953779336683177124, guid: 6dbb18bc6529abc439b544ecf2412e93, type: 3}
+      propertyPath: musicSounds.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7953779336683177124, guid: 6dbb18bc6529abc439b544ecf2412e93, type: 3}
+      propertyPath: musicSounds.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 90d59dd8be764c3418159d67a6229cf1, type: 3}
+    - target: {fileID: 7953779336683177124, guid: 6dbb18bc6529abc439b544ecf2412e93, type: 3}
+      propertyPath: musicSounds.Array.data[5].name
+      value: Hardmode Intro
+      objectReference: {fileID: 0}
+    - target: {fileID: 7953779336683177124, guid: 6dbb18bc6529abc439b544ecf2412e93, type: 3}
+      propertyPath: musicSounds.Array.data[6].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2714858105f7f0d48be08ed751c7fb4b, type: 3}
+    - target: {fileID: 7953779336683177124, guid: 6dbb18bc6529abc439b544ecf2412e93, type: 3}
+      propertyPath: musicSounds.Array.data[6].name
+      value: Standard Intro
+      objectReference: {fileID: 0}
+    - target: {fileID: 7953779336683177124, guid: 6dbb18bc6529abc439b544ecf2412e93, type: 3}
+      propertyPath: musicSounds.Array.data[7].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1aa725ef9ac95494bbbb672c476bc5e4, type: 3}
+    - target: {fileID: 7953779336683177124, guid: 6dbb18bc6529abc439b544ecf2412e93, type: 3}
+      propertyPath: musicSounds.Array.data[7].name
+      value: Main Theme 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7953779336683177124, guid: 6dbb18bc6529abc439b544ecf2412e93, type: 3}
+      propertyPath: musicSounds.Array.data[8].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1dcff2f875d390e4b8c13a2ad5d3155f, type: 3}
+    - target: {fileID: 7953779336683177124, guid: 6dbb18bc6529abc439b544ecf2412e93, type: 3}
+      propertyPath: musicSounds.Array.data[8].name
+      value: Main Theme 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7953779336683177124, guid: 6dbb18bc6529abc439b544ecf2412e93, type: 3}
+      propertyPath: musicSounds.Array.data[9].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: c1a28c77f6a7c9f4ebf3587bd1174e7e, type: 3}
+    - target: {fileID: 7953779336683177124, guid: 6dbb18bc6529abc439b544ecf2412e93, type: 3}
+      propertyPath: musicSounds.Array.data[9].name
+      value: Main Theme 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7953779336683177124, guid: 6dbb18bc6529abc439b544ecf2412e93, type: 3}
+      propertyPath: musicSounds.Array.data[10].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8723321718a92264ab9f810f48726b03, type: 3}
+    - target: {fileID: 7953779336683177124, guid: 6dbb18bc6529abc439b544ecf2412e93, type: 3}
+      propertyPath: musicSounds.Array.data[10].name
+      value: Main Theme 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7953779336683177124, guid: 6dbb18bc6529abc439b544ecf2412e93, type: 3}
+      propertyPath: musicSounds.Array.data[11].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 316ff099ab02d974aad3cca558ad8ca1, type: 3}
+    - target: {fileID: 7953779336683177124, guid: 6dbb18bc6529abc439b544ecf2412e93, type: 3}
+      propertyPath: musicSounds.Array.data[11].name
+      value: Main Theme 6
+      objectReference: {fileID: 0}
     - target: {fileID: 9170407969260063541, guid: 6dbb18bc6529abc439b544ecf2412e93, type: 3}
       propertyPath: fadeSpeed
       value: 3.5
