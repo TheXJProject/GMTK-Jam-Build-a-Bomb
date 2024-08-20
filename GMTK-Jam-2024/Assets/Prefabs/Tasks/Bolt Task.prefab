@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 8183664261633723158}
   - component: {fileID: 2687311013162585847}
   - component: {fileID: 307728362015349429}
+  - component: {fileID: 5964639334479896308}
   m_Layer: 0
   m_Name: Bolt
   m_TagString: Untagged
@@ -209,6 +210,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5964639334479896308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3782261260697027292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50fb967ef0a615c4d9b02f521a2bdcce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: {x: 0, y: 0, z: -200}
 --- !u!1 &5899883107784148908
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,7 +484,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   task: {fileID: 5159372325126649751}
   setNumKeysToBePressed: 1
-  taskCentre: {x: 0, y: 0}
+  Bolt: {fileID: 3782261260697027292}
   numberOfTurnsUntilDone: 5
 --- !u!1 &8788551944181457934
 GameObject:
@@ -490,7 +504,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5975159340822481532
 RectTransform:
   m_ObjectHideFlags: 0

@@ -70,10 +70,11 @@ public class task_bolting : MonoBehaviour
 
     public int numberOfTurnsUntilDone = 5;
 
-    private int turnsCompleted = 0;
+    private float turnsCompleted = 0;
 
     private Vector2 currentMousePosition;
     private Vector2 previousMousePosition;
+    private Vector2 taskCentre;
     private float previousAngle;
     private float currentAngle;
     private float angleDifference;
@@ -99,16 +100,27 @@ public class task_bolting : MonoBehaviour
             // Check if the angle difference is positive or negative to determine direction
             if (angleDifference > 0)
             {
-                Debug.Log("Moving clockwise");//////////////////////////////////////////////////////////
+                turnsCompleted += angleDifference;
+
+                Bolt.GetComponent<Spinning>().isSpinning = true;
             }
-            else if (angleDifference < 0)
+            else
             {
-                Debug.Log("Moving counterclockwise"); //////////////////////////////////////////////////////////
+                Bolt.GetComponent<Spinning>().isSpinning = false;
+            }
+
+            task.SetAmountTaskComplete((turnsCompleted / (numberOfTurnsUntilDone * 360)));
+            
+            if (turnsCompleted >= numberOfTurnsUntilDone * 360)
+            {
+                task.TaskSolved();
+                ResetTask();
             }
 
             // Update previous values
             previousMousePosition = currentMousePosition;
             previousAngle = currentAngle;
+
         }
     }
 
@@ -128,8 +140,8 @@ public class task_bolting : MonoBehaviour
     // Use the following function to reset the progress of the task (function is called when the player lets go of the keys prematurely)
     void ResetTask()
     {
-        turnsCompleted = 0;
-
+        turnsCompleted = 0f;
+        Bolt.GetComponent<Spinning>().isSpinning = false;
     }
 
     // Use the following space to create your own functions (REMEMBER: functions can only be assigned to mouse inputs using the "context" parameter as described above)
@@ -137,7 +149,7 @@ public class task_bolting : MonoBehaviour
     float GetAngleFromCenter(Vector2 position)
     {
         // Assuming center of screen as reference
-        taskCentre = Bolt.GetComponent<RectTransform>().localPosition;
+        taskCentre = Bolt.GetComponent<RectTransform>().anchoredPosition;
         direction = position - taskCentre;
 
         // Get the angle in degrees
