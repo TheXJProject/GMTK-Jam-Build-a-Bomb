@@ -1,10 +1,14 @@
+using System;
+using System.Linq;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class control_keys_pressed : MonoBehaviour
 {
+    public static event Action onKeyLetGo;
     public int[] keysPressed = new int[26]; // Defaultly, each keysPressed[i] is set to 0, where 0 means the key is not held and 1 means it is being held
+    public int[] prevKeysPressed = new int[26]; // Defaultly, each keysPressed[i] is set to 0, where 0 means the key is not held and 1 means it is being held
     public int[] keysProbsNeed = new int[26]; // labels the keys that are currently in use by a problem, 0 means it isn't and 1 means it is
     public string[] alphabet = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
     
@@ -12,6 +16,8 @@ public class control_keys_pressed : MonoBehaviour
     InputAction[] keys = new InputAction[26];
 
     int alphabetLength = 26;
+    int previousNumOfPresses;
+    bool keysChanged;
 
     private void Awake()
     {
@@ -60,6 +66,20 @@ public class control_keys_pressed : MonoBehaviour
         for (int i = 0; i < alphabetLength; i++)
         {
             keys[i].Disable();
+        }
+    }
+
+    private void Update()
+    {
+        keysChanged = false;
+        for (int i = 0; i < keysPressed.Length; i++)
+        {
+            if (keysPressed[i] < prevKeysPressed[i]) { keysChanged = true; }
+            prevKeysPressed[i] = keysPressed[i];
+        }
+        if (keysChanged) 
+        {
+            onKeyLetGo?.Invoke(); 
         }
     }
 

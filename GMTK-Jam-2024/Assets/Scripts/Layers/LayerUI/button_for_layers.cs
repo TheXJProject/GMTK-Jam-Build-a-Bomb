@@ -32,7 +32,7 @@ public class button_for_layers : MonoBehaviour
 
     public void LayerButtonPressed()
     {
-        if (task_setup_and_status.anyIsFocused)
+        if (!task_setup_and_status.anyIsFocused)
         {
             onLayerSelected?.Invoke(representedLayer);
         }

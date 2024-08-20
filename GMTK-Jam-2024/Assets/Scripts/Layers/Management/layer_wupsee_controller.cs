@@ -58,8 +58,7 @@ public class layer_wupsee_controller : MonoBehaviour
                     loopCounter++;
                     test = rnd.Next(hiMultiTaskOdds);
                     repeat = test < lowMultiTaskOdds;
-                    Debug.Log("Finding a layer betwelow " + (numLayers - 1) + ": " + (test = rnd.Next(numLayers - 1)));
-
+                    test = rnd.Next(numLayers - 1);
                     if (layerController.layers[test].GetComponent<layer_task_controller>().MakeTaskGoWrong())
                     {
                         if (countdown <= 0) { countdown = countdownValue; }

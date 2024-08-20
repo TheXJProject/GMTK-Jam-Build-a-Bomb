@@ -8,8 +8,8 @@ using System.Linq;
 public class layer_task_controller : MonoBehaviour
 {
     public List<GameObject> tasksSpawned;
-    int minNumberTasks = 3;
-    int maxNumberTasks = 6;
+    int minNumberTasks = 4;
+    int maxNumberTasks = 4;
 
     control_keys_pressed keyController;
     [SerializeField] List<GameObject> uniqueTasks;

@@ -11,6 +11,7 @@ public class task_setup_and_status : MonoBehaviour
 {
     public static event Action onTaskFocus;
     public static event Action onTaskUnFocus;
+    public static event Action<List<int>> onTaskFocusForButtons;
     public static event Action<int> onTaskComplete;
     public static event Action<int> onWrongTaskCorrected;
     public static bool anyIsFocused; // whether or not the player is currently completing any task
@@ -54,6 +55,7 @@ public class task_setup_and_status : MonoBehaviour
         anyIsFocused = true;
         isFocused = true;
         onTaskFocus?.Invoke();
+        onTaskFocusForButtons?.Invoke(keysRequired);
     }
 
     public void SetAmountTaskComplete(float amount)
@@ -65,8 +67,7 @@ public class task_setup_and_status : MonoBehaviour
     {
         isSolved = true;
         isBeingSolved = false;
-        isFocused = false;
-        anyIsFocused = false;
+        UnfocusTask();
         amountCompleted = 1f;
 
         if (hasGoneWrong) 
@@ -75,6 +76,7 @@ public class task_setup_and_status : MonoBehaviour
             onWrongTaskCorrected?.Invoke(taskLayer); 
         }
         onTaskComplete?.Invoke(taskLayer);
+        
         
     } 
 

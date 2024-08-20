@@ -9,6 +9,7 @@ public class layer_controller : MonoBehaviour
     public static event Action onTimerStart;
     public static event Action onThingsStartGoingWrong;
     public static event Action onVictoryRoyale;
+    public static event Action onTaskCompleteForButtons;
     public static event Action<int> onLayerSolved;
     public static event Action<float> onNewLayerCreated;
 
@@ -44,6 +45,7 @@ public class layer_controller : MonoBehaviour
             return;
         }
         onLayerSolved?.Invoke(thisLayer);
+        onTaskCompleteForButtons?.Invoke();
     }
 
     public void createCoreLayer()
