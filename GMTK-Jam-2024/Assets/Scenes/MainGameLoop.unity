@@ -167,8 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6669103138cf3bc4c988156bcfa30a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerSizeIncrease: 3
-  layerSizeIncAccelerate: 1.5
+  layers: []
   uniqueLayers:
   - {fileID: 3589266126363041115, guid: 82a08d1ae30213d48b7a9ac243597b17, type: 3}
   - {fileID: 3589266126363041115, guid: fa7ac343d1406d147aef9449b45e5f9c, type: 3}
@@ -180,7 +179,8 @@ MonoBehaviour:
   - {fileID: 3589266126363041115, guid: 9af97b0442137ed47a3d405dc90d66db, type: 3}
   - {fileID: 3589266126363041115, guid: 81b6121b7beff32418577af1dfd44b49, type: 3}
   - {fileID: 3589266126363041115, guid: 5c66a9c349c635944a8e5158e8b4ffba, type: 3}
-  layers: []
+  layerSizeIncrease: 3
+  layerSizeIncAccelerate: 1.5
 --- !u!114 &49660096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,8 +193,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8918bf801982bec44b7d7020b57fa280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingCountdown: 10
+  difficultyModifier: 0.9
   layerController: {fileID: 49660095}
+  startingCountdown: 10
+  startHiMultiTaskOdds: 50
+  startlowMultiTaskOdds: 4
 --- !u!1 &65382428
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,7 +889,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!114 &766856781
 MonoBehaviour:
   m_ObjectHideFlags: 0

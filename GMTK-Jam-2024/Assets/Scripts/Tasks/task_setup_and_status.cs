@@ -9,6 +9,8 @@ using System.Linq;
 
 public class task_setup_and_status : MonoBehaviour
 {
+    public static event Action onTaskFocus;
+    public static event Action onTaskUnFocus;
     public static event Action<int> onTaskComplete;
     public static event Action<int> onWrongTaskCorrected;
     public static bool anyIsFocused; // whether or not the player is currently completing any task
@@ -45,11 +47,13 @@ public class task_setup_and_status : MonoBehaviour
     {
         anyIsFocused = false;
         isFocused = false;
+        onTaskUnFocus?.Invoke();
     }
     public void FocusTask()
     {
         anyIsFocused = true;
         isFocused = true;
+        onTaskFocus?.Invoke();
     }
 
     public void SetAmountTaskComplete(float amount)

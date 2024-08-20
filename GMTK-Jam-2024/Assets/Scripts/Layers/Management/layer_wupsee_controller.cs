@@ -25,6 +25,7 @@ public class layer_wupsee_controller : MonoBehaviour
     int hiMultiTaskOdds;
     int lowMultiTaskOdds;
 
+    int test;
 
     private void OnEnable()
     {
@@ -55,17 +56,16 @@ public class layer_wupsee_controller : MonoBehaviour
                 do
                 {
                     loopCounter++;
-                    repeat = rnd.Next(hiMultiTaskOdds) < lowMultiTaskOdds;
-                    if (layerController.layers[rnd.Next(numLayers - 1)].GetComponent<layer_task_controller>().MakeTaskGoWrong())
+                    test = rnd.Next(hiMultiTaskOdds);
+                    repeat = test < lowMultiTaskOdds;
+                    Debug.Log("Finding a layer betwelow " + (numLayers - 1) + ": " + (test = rnd.Next(numLayers - 1)));
+
+                    if (layerController.layers[test].GetComponent<layer_task_controller>().MakeTaskGoWrong())
                     {
                         if (countdown <= 0) { countdown = countdownValue; }
                     }
                     else { countdown += 1; }
-                    if (loopCounter > 100)
-                    {
-                        Debug.LogWarning("task gone wrong manager loop repeated too many times");
-                        break;
-                    }
+                    if (loopCounter > 3) { break; }
                 }
                 while (repeat);
             }

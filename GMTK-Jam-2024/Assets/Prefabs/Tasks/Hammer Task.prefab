@@ -138,6 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSolved: 0
   isBeingSolved: 0
+  hasGoneWrong: 0
   isFocused: 0
   amountCompleted: 0
   taskDifficulty: 1
@@ -183,4 +184,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   task: {fileID: 5159372325126649751}
-  setTaskDifficulty: 1
+  setNumKeysToBePressed: 1

@@ -8,7 +8,8 @@ using System.Linq;
 public class layer_task_controller : MonoBehaviour
 {
     public List<GameObject> tasksSpawned;
-    public int numberTasksSpawned;
+    int minNumberTasks = 3;
+    int maxNumberTasks = 6;
 
     control_keys_pressed keyController;
     [SerializeField] List<GameObject> uniqueTasks;
@@ -21,6 +22,7 @@ public class layer_task_controller : MonoBehaviour
     [SerializeField] float minRadiusForNoSpawns;
     [SerializeField] float maxRadiusForNoSpawns;
 
+    int numberTasksSpawned;
     Vector2 tempNewLoc1;
     Vector2 tempNewLoc2;
     System.Random rnd = new System.Random();
@@ -28,6 +30,7 @@ public class layer_task_controller : MonoBehaviour
     private void OnEnable()
     {
         keyController = GameObject.Find("/Game Managers/Manager for Keys Pressed").GetComponent<control_keys_pressed>();
+        numberTasksSpawned = rnd.Next(minNumberTasks, (maxNumberTasks + 1));
         SpawnTasks();
     }
 

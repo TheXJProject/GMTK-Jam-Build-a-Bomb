@@ -10,7 +10,7 @@ public class Layer_ui_controller : MonoBehaviour
     
     [SerializeField] List<GameObject> layerButtons;
 
-    int countTasksGoingWrong;
+    int[] countTasksGoingWrong = new int[9];
     float topBottomHeight;
     float buttonHeight;
     float predictedTotalHeight;
@@ -39,13 +39,13 @@ public class Layer_ui_controller : MonoBehaviour
 
     void AlertPlayerToLayer(int layerNumber)
     {
-        countTasksGoingWrong++;
+        countTasksGoingWrong[layerNumber]++;
         layerButtons[layerNumber].GetComponent<button_for_layers>().LayerTaskWentWrong = true;
     }
 
     void AttemptStopAlerting(int layerNumber)
     {
-        if (--countTasksGoingWrong == 0)
+        if (--countTasksGoingWrong[layerNumber] == 0)
         {
             layerButtons[layerNumber].GetComponent<button_for_layers>().LayerTaskWentWrong = false;
         }

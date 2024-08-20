@@ -8,7 +8,7 @@ public class task_hammering : MonoBehaviour
 {
     /* DON'T CHANGE ANY OF THE FOLLOWING CODE */
     [SerializeField] task_setup_and_status task;
-    [SerializeField] int setTaskDifficulty;
+    [SerializeField] int setNumKeysToBePressed;
 
     Player_controller inputActions;
     InputAction leftClick;
@@ -18,11 +18,13 @@ public class task_hammering : MonoBehaviour
     private void Awake()
     {
         inputActions = new Player_controller();
-        task.taskDifficulty = setTaskDifficulty;
+        task.taskDifficulty = setNumKeysToBePressed;
     }
 
     private void OnEnable()
     {
+        task_setup_and_status.onTaskFocus += ShowTask;
+        task_setup_and_status.onTaskUnFocus += HideTask;
         leftClick = inputActions.mouse.leftClick;
         leftClick.Enable();
 
@@ -39,6 +41,8 @@ public class task_hammering : MonoBehaviour
     /* DON'T CHANGE THE FOLLOWING CODE */
     private void OnDisable()
     {
+        task_setup_and_status.onTaskFocus -= ShowTask;
+        task_setup_and_status.onTaskUnFocus -= HideTask;
         leftClick.Disable();
     }
 
@@ -66,6 +70,19 @@ public class task_hammering : MonoBehaviour
 
         // Add a any of your own code in the following space:
 
+    }
+
+    void ShowTask()
+    {
+        if (task.isFocused)
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+        }
+    }
+
+    void HideTask()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
     }
 
     // Use the following function to reset the progress of the task (function is called when the player lets go of the keys prematurely)
