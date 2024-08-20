@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class key_buttons : MonoBehaviour
 {
@@ -17,5 +18,7 @@ public class key_buttons : MonoBehaviour
     private void Update()
     {
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = alphabet[letter];
+        if (keyController.keysPressed[letter] == 1) { gameObject.GetComponent<Image>().color = Color.yellow;  }
+        else { gameObject.GetComponent<Image>().color = Color.white; }
     }
 }

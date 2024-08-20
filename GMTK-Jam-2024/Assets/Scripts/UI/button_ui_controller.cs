@@ -53,6 +53,7 @@ public class button_ui_controller : MonoBehaviour
 
     void AddNewKeyButton(int letter, GameObject task)
     {
+        if (buttonsTasks.Contains(task)) { return; }
         RemoveUndeededButtons();
         keyButtons.Add(Instantiate(keyButton, this.transform));
         keyButtonKeys.Add(letter);

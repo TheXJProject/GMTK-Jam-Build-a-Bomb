@@ -105,7 +105,7 @@ public class task_activate_and_cancel : MonoBehaviour
         task.isSolved = false;
         task.isBeingSolved = false;
         task.isFocused = false;
-        task.amountCompleted = 0f;
+        task_setup_and_status.amountCompleted = 0f;
         task.hasGoneWrong = true;
 
         onTaskGoesWrong?.Invoke(task.taskLayer);
