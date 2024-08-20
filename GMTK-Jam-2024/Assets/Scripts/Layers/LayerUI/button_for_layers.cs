@@ -32,6 +32,7 @@ public class button_for_layers : MonoBehaviour
 
     public void LayerButtonPressed()
     {
+        AudioManager.Instance.PlaySFX("Level Select");
         if (!task_setup_and_status.anyIsFocused)
         {
             onLayerSelected?.Invoke(representedLayer);

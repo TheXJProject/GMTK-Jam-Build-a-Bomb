@@ -84,6 +84,7 @@ public class task_activate_and_cancel : MonoBehaviour
 
     void LetGoWhileSolving()
     {
+        AudioManager.Instance.PlaySFX("Task Fail");
         task.isBeingSolved = false;
         onPlayerLetTaskGo?.Invoke();
     }
@@ -98,6 +99,7 @@ public class task_activate_and_cancel : MonoBehaviour
 
     public bool TaskGoesWrong()
     {
+        AudioManager.Instance.PlaySFX("Task Goes Wrong");
         if (task.hasGoneWrong) { return false; }
         if (task.taskDifficulty - keyController.keysPressed.Sum() <= 0) { return false; }
         task.isSolved = false;

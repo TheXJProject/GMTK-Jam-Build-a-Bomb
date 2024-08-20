@@ -63,6 +63,7 @@ public class layer_controller : MonoBehaviour
             onVictoryRoyale?.Invoke();
             return;
         }
+        AudioManager.Instance.PlaySFX("Level Solved");
         thisLayer = prevLayer + 1;
         layers.Add(Instantiate(uniqueLayers[thisLayer], Vector2.zero, Quaternion.identity, this.transform));
         layers[thisLayer].transform.localScale *= thisLayer * layerSizeIncrease;

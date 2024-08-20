@@ -46,12 +46,14 @@ public class task_setup_and_status : MonoBehaviour
 
     public void UnfocusTask()
     {
+        AudioManager.Instance.PlaySFX("Task Deselection");
         anyIsFocused = false;
         isFocused = false;
         onTaskUnFocus?.Invoke();
     }
     public void FocusTask()
     {
+        AudioManager.Instance.PlaySFX("Task Select");
         anyIsFocused = true;
         isFocused = true;
         onTaskFocus?.Invoke();
@@ -65,6 +67,7 @@ public class task_setup_and_status : MonoBehaviour
 
     public void TaskSolved()
     {
+        AudioManager.Instance.PlaySFX("Task Solved");
         isSolved = true;
         isBeingSolved = false;
         UnfocusTask();
