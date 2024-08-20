@@ -20,8 +20,6 @@ public class TimerScript : MonoBehaviour
 
     private bool timerStopped = false;
 
-    private bool drainingTime = false;
-
     private int minutes;
     private int seconds;
     private string tempMinStr;
