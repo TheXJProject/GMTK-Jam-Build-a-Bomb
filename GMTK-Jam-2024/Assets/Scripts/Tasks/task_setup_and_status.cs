@@ -33,7 +33,7 @@ public class task_setup_and_status : MonoBehaviour
     {
         keyController = GameObject.Find("/Game Managers/Manager for Keys Pressed").GetComponent<control_keys_pressed>();
         SetKeysRequired();
-
+        anyIsFocused = false;
         // Debug log the keys required
         for (int i = 0; i < taskDifficulty; i++)
         {

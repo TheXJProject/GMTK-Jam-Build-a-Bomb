@@ -22,8 +22,14 @@ public class SceneChangerScript : MonoBehaviour
         if ((PlayerTracking.Tracker.currentWinType != PlayerTracking.winType.noWin) && !isLeaving)
         {
             isLeaving = true;
-            AudioManager.Instance.FadeOutMusic();
-            // prepare to change to end scene
+            
+            
+            //AudioManager.Instance.FadeOutMusic();
+            // Alter to be smoother in future
+            
+            
+            AudioManager.Instance.StopMusic();
+            ChangeToEndScene();
         }
     }
 
@@ -32,10 +38,10 @@ public class SceneChangerScript : MonoBehaviour
         if ((PlayerTracking.Tracker.currentWinType == PlayerTracking.winType.noWin) && !isLeaving)
         {
             isLeaving = true;
-            AudioManager.Instance.FadeOutMusic();
             PlayerTracking.Tracker.currentWinType = PlayerTracking.winType.Loss;
 
-            // prepare to change to main menu
+            AudioManager.Instance.StopMusic();
+            ChangeToMainMenu();
         }
     }
 
@@ -44,10 +50,13 @@ public class SceneChangerScript : MonoBehaviour
         if ((PlayerTracking.Tracker.currentWinType == PlayerTracking.winType.noWin) && !isLeaving)
         {
             isLeaving = true;
-            AudioManager.Instance.FadeOutMusic();
             PlayerTracking.Tracker.currentWinType = PlayerTracking.winType.Win;
 
-            // prepare to change to End Scene
+            //AudioManager.Instance.FadeOutMusic();
+            // Alter to be smoother in future
+
+            AudioManager.Instance.StopMusic();
+            ChangeToEndScene();
         }
     }
 
@@ -58,6 +67,6 @@ public class SceneChangerScript : MonoBehaviour
 
     private void ChangeToEndScene ()
     {
-        SceneManager.LoadScene("StartMenu");
+        SceneManager.LoadScene("EndScene");
     }
 }
