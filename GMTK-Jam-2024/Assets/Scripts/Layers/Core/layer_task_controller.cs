@@ -3,31 +3,32 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class layer_task_controller : MonoBehaviour
 {
+    public List<GameObject> tasksSpawned;
+    public int numberTasksSpawned;
+
+    control_keys_pressed keyController;
     [SerializeField] List<GameObject> uniqueTasks;
-    [SerializeField] List<GameObject> tasksSpawned;
     [SerializeField] List<Vector2> taskPositions;
 
     public int layer;
     public int topLayerTasksSolved = 0;
 
-    [SerializeField] int numberTasksSpawned;
     [SerializeField] float radiusForTaskCollider;
     [SerializeField] float minRadiusForNoSpawns;
     [SerializeField] float maxRadiusForNoSpawns;
 
     Vector2 tempNewLoc1;
     Vector2 tempNewLoc2;
+    System.Random rnd = new System.Random();
 
     private void OnEnable()
     {
+        keyController = GameObject.Find("/Game Managers/Manager for Keys Pressed").GetComponent<control_keys_pressed>();
         SpawnTasks();
-    }
-    private void OnDisable()
-    {
-
     }
 
     Vector2 GetNextTaskSpawnLoc() // Gets location for spawn within a circle such that it is between the minimum and maxium radius
@@ -88,5 +89,14 @@ public class layer_task_controller : MonoBehaviour
             if (!tasksSpawned[i].GetComponent<task_setup_and_status>().isSolved) { return false; }
         }
         return true;
+    }
+
+    public bool MakeTaskGoWrong()
+    {
+        if (keyController.keysPressed.Sum() >= 5) 
+        {
+            return false; 
+        }
+        return tasksSpawned[rnd.Next(numberTasksSpawned)].GetComponent<task_activate_and_cancel>().TaskGoesWrong();
     }
 }

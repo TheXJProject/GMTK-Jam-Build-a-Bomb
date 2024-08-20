@@ -28,11 +28,13 @@ public class Layer_ui_controller : MonoBehaviour
     {
         layer_controller.onLayerSolved += AddNewLayerButton;
         task_activate_and_cancel.onTaskGoesWrong += AlertPlayerToLayer;
+        task_setup_and_status.onWrongTaskCorrected += AttemptStopAlerting;
     }
     private void OnDisable()
     {
         layer_controller.onLayerSolved -= AddNewLayerButton;
         task_activate_and_cancel.onTaskGoesWrong -= AlertPlayerToLayer;
+        task_setup_and_status.onWrongTaskCorrected -= AttemptStopAlerting;
     }
 
     void AlertPlayerToLayer(int layerNumber)

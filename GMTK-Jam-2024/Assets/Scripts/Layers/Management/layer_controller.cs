@@ -7,14 +7,15 @@ using UnityEngine;
 public class layer_controller : MonoBehaviour
 {
     public static event Action onTimerStart;
+    public static event Action onThingsStartGoingWrong;
     public static event Action onVictoryRoyale;
     public static event Action<int> onLayerSolved;
     public static event Action<float> onNewLayerCreated;
 
+    public List<GameObject> layers;
+    [SerializeField] List<GameObject> uniqueLayers;
     [SerializeField] float layerSizeIncrease = 3f;
     [SerializeField] float layerSizeIncAccelerate = 2f;
-    [SerializeField] List<GameObject> uniqueLayers;
-    [SerializeField] List<GameObject> layers;
 
     int thisLayer = 0;
     private void OnEnable()
@@ -38,7 +39,7 @@ public class layer_controller : MonoBehaviour
             if (!layers[i].GetComponent<layer_task_controller>().CheckFinishedThisLayer()) { return; }
         }
         if (taskLayer == 9) 
-        { 
+        {
             onVictoryRoyale?.Invoke();
             return;
         }
@@ -54,6 +55,8 @@ public class layer_controller : MonoBehaviour
     void createNewLayer(int prevLayer)
     {
         if (prevLayer == 0) { onTimerStart?.Invoke(); }
+        if (prevLayer == 1) { onThingsStartGoingWrong?.Invoke(); }
+
         thisLayer = prevLayer + 1;
         layers.Add(Instantiate(uniqueLayers[thisLayer], Vector2.zero, Quaternion.identity, this.transform));
         layers[thisLayer].transform.localScale *= thisLayer * layerSizeIncrease;

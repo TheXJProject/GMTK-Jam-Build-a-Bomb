@@ -132,6 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 49660094}
   - component: {fileID: 49660095}
+  - component: {fileID: 49660096}
   m_Layer: 0
   m_Name: Bomb Layers
   m_TagString: Untagged
@@ -180,6 +181,20 @@ MonoBehaviour:
   - {fileID: 3589266126363041115, guid: 81b6121b7beff32418577af1dfd44b49, type: 3}
   - {fileID: 3589266126363041115, guid: 5c66a9c349c635944a8e5158e8b4ffba, type: 3}
   layers: []
+--- !u!114 &49660096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49660093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8918bf801982bec44b7d7020b57fa280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingCountdown: 10
+  layerController: {fileID: 49660095}
 --- !u!1 &65382428
 GameObject:
   m_ObjectHideFlags: 0
@@ -1372,7 +1387,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.8713359}
   m_AnchorMax: {x: 0.1025, y: 1}
-  m_AnchoredPosition: {x: 7.6669006, y: -7.1607056}
+  m_AnchoredPosition: {x: 7.66687, y: -7.1607056}
   m_SizeDelta: {x: -15.333099, y: -14.321411}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1022275353

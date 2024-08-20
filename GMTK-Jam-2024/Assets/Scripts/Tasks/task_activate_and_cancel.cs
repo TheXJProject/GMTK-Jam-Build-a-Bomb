@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -95,8 +96,10 @@ public class task_activate_and_cancel : MonoBehaviour
         }
     }
 
-    public void TaskGoesWrong()
+    public bool TaskGoesWrong()
     {
+        if (task.hasGoneWrong) { return false; }
+        if (task.taskDifficulty - keyController.keysPressed.Sum() <= 0) { return false; }
         task.isSolved = false;
         task.isBeingSolved = false;
         task.isFocused = false;
@@ -104,5 +107,6 @@ public class task_activate_and_cancel : MonoBehaviour
         task.hasGoneWrong = true;
 
         onTaskGoesWrong?.Invoke(task.taskLayer);
+        return true;
     }
 }

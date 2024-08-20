@@ -65,12 +65,16 @@ public class task_setup_and_status : MonoBehaviour
         anyIsFocused = false;
         amountCompleted = 1f;
 
-        if (hasGoneWrong) { onWrongTaskCorrected?.Invoke(taskLayer); }
+        if (hasGoneWrong) 
+        { 
+            hasGoneWrong = false;
+            onWrongTaskCorrected?.Invoke(taskLayer); 
+        }
         onTaskComplete?.Invoke(taskLayer);
         
     } 
 
-    void SetKeysRequired() // Sets unique keys for a task, if the task has gone wrong then the keys won't be ones that are being pressed
+    void SetKeysRequired() // Sets unique keys for a task, if the task has "gone wrong" then the keys will not be ones that are being pressed
     {
         int j;
         keysRequired.Clear();
